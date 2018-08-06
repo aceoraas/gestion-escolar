@@ -19,9 +19,9 @@
 
 
 
-    <h3><b>Bienvenido al registro de la U.E.B. Angel Celestino Bello</b></h3>
-    <br><p><big>Lea con detenimiento y rellene todos los campos requerido para su inscripcion en el plantel, si necesita ayuda tecnica acuda a al soporte tecnico del plantel.<br></big></p></div></div>
-
+    <h3><b>Bienvenido al registro del sitema de gestion escolar para la U.E.B. Angel Celestino Bello</b></h3>
+    <br><p><big><b>Querido Usuario Por favor Lea con detenimiento y rellene todos los campos requerido para su correcta creacion de la cuenta en el sistema del plantel, si necesita ayuda o dirección tecnica acuda a al departamento de informatica del plantel.</b><br></big></p></div></div>
+<div class="divider"></div>
     <div class='card-content'> 
     <nav><div class='nav-wrapper teal z-depth-3'><div class='col s12'>
     <a href='#!' class='breadcrumb'>Crear Cuenta</a></div></div>
@@ -80,7 +80,7 @@
       <input id='pregunta2' type='text'>
       <label id='labelseguridad2'>Respuesta de seguridad</label>
       </div><br><br><br>
-
+<div class="divider"></div>
     <!--Boton siguiente primera parte del registro-->
      <div id='divsiguiente' class='input-field'>
      <input value='2' type='text' style='display:none;'>
@@ -101,8 +101,8 @@
 <div class='card-content'> 
   <nav><div class='nav-wrapper teal z-depth-3'><div class='col s12'>
   <a class='breadcrumb'>Crear Cuenta</a><a class='breadcrumb'>LLave de recuperacion</a>
-  </div></div></nav><br><br><i class='large material-icons'>vpn_key</i><br><p><big>Guarda estos datos, son tu llave de recuperacion de cuenta</big></p>
-
+  </div></div></nav><br><br><i class='large material-icons'>vpn_key</i><br><p><big><b>Guarda estos datos, son tu llave de recuperacion de cuenta</b></big></p>
+<div class="divider"></div>
     <div id='named' class='left-align input-field col s12 l9'>
     <i><b><big><h6>Nombre:</h6></big></b></i>
     <i><b><input  style='text-align: center;'type='text' readonly="true" id='name'></b></i>
@@ -139,7 +139,8 @@
   <i><b><big><h6>Respuesta Secreta:</h6></big></b></i>
   <i><b><input style='text-align: center;' type='text'readonly='true'  id='rs'></b></i>
   </div>
-
+  
+<div class="divider"></div>
 <div  class='input-field col s12 offset-l2 l3'>
 <a id='bajarllave'class='waves-effect waves-light btn'>Bajar Copia<i class='material-icons left'>cloud_download</i></a>
 </div>
@@ -167,8 +168,8 @@
   <br><br>
   <i class=' center medium material-icons'>people</i>
   <h4>Datos personales</h4>
-  <br><p><big>Por favor rellene los campos requeridos para su identificacion y contacto</big></p></div>
-  
+  <br><p><big><b>Por favor rellene los campos requeridos para su identificacion y contacto</b></big></p></div>
+  <div class="divider"></div>
   <!--nombres y apellidos-->
     
 
@@ -258,7 +259,7 @@
     <label>Parroquia</label>
     </div>
 
-
+<div class="divider"></div>
 
     <!--botones-->
  
@@ -279,19 +280,24 @@
 <div id="datoslaborales">
   <center>
   <div class='card black-text row z-depth-3'style='width:90%;height:100%;text-align:center;align-items:center;justify-content:center;'>
-  <br><div class='row'><div class='col s12 l12'>
-  <h3><b>Bienvenido al registro de la U.E.B. Angel Celestino Bello</b></h3><br>
-  <p><big>Lea con detenimiento y rellene todos los campos requerido para su inscripcion en el plantel, si necesita ayuda tecnica acuda  a al soporte tecnico del plantel.<br></big></p></div></div>
-                
+  <br><div class='row'><div class='col s12 l12'>                
   <div class='card-content'> 
   <nav><div class='nav-wrapper teal z-depth-3'><div class='col s12'>
   <a class='breadcrumb'>...</a><a class='breadcrumb'>Identificacion</a><a class='breadcrumb'>Area Laboral</a></div>
   </div></nav><br><br>
 
-  Cuarta vista vista <br><p><big>aqui se pide los datos segun el area laboral y el area laboral</big></p>
-
+  <i class=' center medium material-icons'>work</i>
+  <h4>Datos de Area Laboral</h4>
+  <br>
+  <p><big><b>Lea con detenimiento y rellene todos los campos requerido para su correcta inscripcion en el sistema de gestion escolar de la unidad educativa angel celestino bello, estos datos son de gran importancia y seran revisados para su posible aprobación, tenga en cuenta que al finalizar debera ingresar con su cuenta al sistema de gestion escolar para obtenga informacion del estado de su solicitud y habilitacion del sistema en su area.</b><br></big></p></div></div>
+<br>
+<div class="divider"></div>
+<div class="divider"></div>
 <div class='input-field col s12  offset-l2 l3'>
 <a id='btnatras4' class='waves-effect waves-light btn'>atras</a>
+</div>
+<div class='input-field col s12  offset-l2 l3'>
+<a id='btnRegistrar' class='waves-effect waves-light btn red'>Registrar</a>
 </div>
 </div></div>
 <br>
