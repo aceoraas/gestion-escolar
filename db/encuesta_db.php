@@ -60,26 +60,6 @@
 		$no=$no +	$this->db->count(array('Pregunta6'=>'no'));
 		return $no;
 		}
-		public function contadorpreguntassi(){
-			$a=$this->db->count(array('Pregunta1'=>'si'));
-			$b=$this->db->count(array('Pregunta2'=>'si'));
-			$c=$this->db->count(array('Pregunta3'=>'si'));
-			$d=$this->db->count(array('Pregunta4'=>'si'));
-			$e=$this->db->count(array('Pregunta5'=>'si'));
-			$f=$this->db->count(array('Pregunta6'=>'si'));
-			$si=array('a' => $a,'b'=>$b, 'c' =>$c,'d'>$d,'e'=>$e,'f'=>$f);
-		return $si;
-		}
-		public function contadorpreguntasno(){
-		$a=$this->db->count(array('Pregunta1'=>'no'));
-			$b=$this->db->count(array('Pregunta2'=>'no'));
-			$c=$this->db->count(array('Pregunta3'=>'no'));
-			$d=$this->db->count(array('Pregunta4'=>'no'));
-			$e=$this->db->count(array('Pregunta5'=>'no'));
-			$f=$this->db->count(array('Pregunta6'=>'no'));
-			$no=array('a' => $a,'b'=>$b, 'c' =>$c,'d'>$d,'e'=>$e,'f'=>$f);
-		return $no;
-		}
 	}
 
 ?>

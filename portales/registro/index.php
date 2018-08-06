@@ -50,26 +50,26 @@
     <!--Usuario y contraseña-->
      <div id='divusuario' class='input-field col s12 l12'>
      <i id='iusuario' class='material-icons prefix'>account_circle</i>
-     <input id='Usuario' type='text' name='Usuario'>
+     <input id='Usuario' type='text' >
      <label id='labelusuario'>Usuario</label>
      </div><br><br><br><br>
      
      <div id='divcontra1'class='input-field col s12 l6'>
      <i id='icontra1'class='material-icons prefix'>dialpad</i>
-     <input id='contra1' type='password' name='contra'>
+     <input id='contra1' type='password'>
      <label id='labelcontra1'>Contraseña</label>
      </div><dr>
      </dr>
      <div id='divcontra2'class='input-field col s12 l6'>
      <i id='icontra2'class='material-icons prefix'>dialpad</i>
-     <input id='contra2' type='password' name='Confirmecontra'>
+     <input id='contra2' type='password' >
      <label id='labelcontra2'>Confirme la contraseña</label>
      </div><br>
            
     <!--Pregunta de seguridad-->
       <div id='divseguridad1' class='input-field col s12 l6'>
       <i id='iseguridad1'class='material-icons prefix'>security</i>
-      <input id='Pregunta' type='text' name='Pregunta'>
+      <input id='Pregunta' type='text' >
       <label id='labelseguridad1'>Pregunta de seguridad</label>
       </div>
       <dr>
@@ -77,13 +77,13 @@
       </dr>
       <div id='divseguridad2' class='input-field col s12 l6'>
       <i id='iseguridad2' class='material-icons prefix'>security</i>
-      <input id='pregunta2' type='text' name='Confirmepregunta'>
+      <input id='pregunta2' type='text'>
       <label id='labelseguridad2'>Respuesta de seguridad</label>
       </div><br><br><br>
 
     <!--Boton siguiente primera parte del registro-->
      <div id='divsiguiente' class='input-field'>
-     <input value='2' type='text' style='display:none;' name='paso'>
+     <input value='2' type='text' style='display:none;'>
      <a id='btnpaso1' class='waves-effect waves-light btn'>siguiente</a>        
      </div>
     
@@ -162,21 +162,111 @@
    
   
   <div class='card-content'> 
-  <nav><div class='nav-wrapper teal z-depth-3'><div class='col s12'>
-  <a class='breadcrumb'>Crear Cuenta</a><a class='breadcrumb'>LLave de recuperacion</a><a class='breadcrumb'>Identificacion</a></div></div></nav><br><br>
-  Tercera vista vista <br><p><big>aqui se pide los datos personales y el area laboral</big></p></div>
+  <nav><div class='nav-wrapper teal z-depth-3'><div class='col s12 '>
+  <a class='breadcrumb'>...</a><a class='breadcrumb'>LLave de recuperacion</a><a class='breadcrumb'>Identificacion</a></div></div></nav>
+  <br><br>
+  <i class=' center medium material-icons'>people</i>
+  <h4>Datos personales</h4>
+  <br><p><big>Por favor rellene los campos requeridos para su identificacion y contacto</big></p></div>
   
-  <!--fecha de nacimiento picker-->
-    <div class='input-field col s12 m12 l12'>
-    <i class='material-icons prefix'>today</i>
-    <input type='text' name='fecha_nacimiento' class='datepicker'>
-    <label for='first_name'>Fecha de Nacimiento</label>
+  <!--nombres y apellidos-->
+    
+
+    <div class='input-field col s12 l3'>
+    <input type='text' >
+    <label>Primer Nombre</label>
     </div>
-  <div class='input-field col s12  offset-l2 l3'>
-<a id='btnpaso3' class='waves-effect waves-light btn'>siguiente</a>
-</div>
+
+    <div class='input-field col s12 l3'>
+    <input type='text' >
+    <label>Segundo Nombre</label>
+    </div>
+
+    <div class='input-field col s12 l3'>
+    <input type='text' >
+    <label>Primer Apellido</label>
+    </div>
+
+    <div class='input-field col s12 l3'>
+    <input type='text' >
+    <label>Segundo Apellido</label>
+    </div>
+
+    <div class='input-field col s12 l4'>
+    <input disabled="true" type='text' value="V-27226407" >
+    <label>Cedula</label>
+    </div>
+
+
+    <!--fecha de nacimiento picker-->
+    <div class='input-field col s12 l4'>
+    <i class='material-icons prefix'>today</i>
+    <input type='text'  class='datepicker'>
+    <label>Fecha de Nacimiento</label>
+    </div>
+
+    <div class='input-field col s12  l4'>
+    <select id=''>
+      <option disabled value="">Selecione su Sexo</option>
+      <option value="M">Masculino</option>
+      <option value="F">Femenino</option>
+      option
+      option
+    </select>
+    <label>Genero</label>
+    </div>
+
+    <div class='input-field col s12 l4'>
+    <i class='material-icons prefix'>mail</i>
+    <input type='email' >
+    <label>Correo</label>
+    </div>
+
+    <div class='input-field col s12 l4'>
+    <i class='material-icons prefix'>phone_iphone</i>
+    <input type='text' >
+    <label>Numero de su Telefono Movil</label>
+    </div>
+    <div class='input-field col s12 l4'>
+    <i class='material-icons prefix'>call</i>
+    <input type='text' >
+    <label>Numero de su Telefono Fijo</label>
+    </div>
+
+    <div class='input-field col s12  l3'>
+    <select id=''>
+      <option disabled value="">Selecione un Estado</option>
+    </select>
+    <label>Estado</label>
+    </div>
+    <div class='input-field col s12  l3'>
+    <select id=''>
+      <option disabled value="">Selecione una Ciudad</option>
+    </select>
+    <label>Ciudad</label>
+    </div>
+    <div class='input-field col s12  l3'>
+    <select id=''>
+      <option disabled value="">Selecione un Municipio</option>
+    </select>
+    <label>Municipio</label>
+    </div>
+    <div class='input-field col s12  l3'>
+    <select id=''>
+      <option disabled value="">Selecione una Parroquia</option>
+    </select>
+    <label>Parroquia</label>
+    </div>
+
+
+
+    <!--botones-->
+ 
 <div class='input-field col s12  offset-l2 l3'>
 <a id='btnatras3' class='waves-effect waves-light btn'>atras</a>
+</div>
+ <div class='input-field col s12  offset-l2 l3'>
+<a id='btnpaso3' class='waves-effect waves-light btn'>siguiente</a>
 </div>
  </div>
 </div>
@@ -195,7 +285,7 @@
                 
   <div class='card-content'> 
   <nav><div class='nav-wrapper teal z-depth-3'><div class='col s12'>
-  <a class='breadcrumb'>Crear Cuenta</a><a class='breadcrumb'>LLave de recuperacion</a><a class='breadcrumb'>Identificacion</a><a class='breadcrumb'>Area Laboral</a></div>
+  <a class='breadcrumb'>...</a><a class='breadcrumb'>Identificacion</a><a class='breadcrumb'>Area Laboral</a></div>
   </div></nav><br><br>
 
   Cuarta vista vista <br><p><big>aqui se pide los datos segun el area laboral y el area laboral</big></p>

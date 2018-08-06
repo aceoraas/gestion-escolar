@@ -1,6 +1,6 @@
 /* PARA LA FECHA Y LA HORA*/
 
-vistas('0');
+vistas('2');
 var uci;
 
 $('.datepicker').pickadate({
@@ -88,12 +88,19 @@ $('#datoslaborales').show('slow');
   if (ncedula!=''){
     if (ncedula!='0') {
       //mensaje post
-    $.post("../../procesos/validacion/validacion_registro.php",
-        { laci:ncedula,
+      var mensaje={
+          laci:ncedula,
           naci:cnacionalidad
-        },function(data){
+      };
+      $.ajax({
+
+          data: mensaje,
+          url:'../../procesos/validacion/validacion_registro.php',
+          type: 'post',
+          beforeSend: function () {
+            $("#labelcedula").html("Procesando, espere por favor...");
+         },success: function(data){
           obj = JSON.parse(data); 
-           
            
             //verifica el booleano de servidor.
            if(obj.valor=='1'||obj.valor=='0'||obj.valor=='3') {
@@ -117,11 +124,8 @@ $('#datoslaborales').show('slow');
                   positivo[2]=true;
               }
             }
-            else{
-              
-        }
-        console.log("cedula: "+cedula+" Valor: "+obj.valor)
-      });
+           
+      }});
     }//error cedula vacia o 0
     else{
           
