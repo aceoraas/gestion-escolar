@@ -222,8 +222,9 @@
 
 			function formateado($da)
 			{
+				
 				$strlen=strlen($da);
-				if ($strlen>10||$strlen<13){
+				if ($strlen>10&&$strlen<13){
 					//4 1 6 3 8 0 7 6 3 9
 					//0 4 1 6 3 8 0 7 6 3  9
 					//4 1 6 - 3 8 0 7 6 3  9
@@ -240,23 +241,36 @@
   							$da = (($da/10)*10);
 							
 							if (strlen($da)==10){
-								echo $da;
-								
+								$valor=array('valor'=>'1','mensaje'=>$da);
+								$js=json_encode($valor);
+								return $js;
 							}else{
-								echo "este numero no es Valido";
+								$valor=array('valor'=>'0','mensaje'=>"este numero no es Valido");
+								$js=json_encode($valor);
+								return $js;
 							}		
   						 }
   						 else{
-  						 	echo $da;
+  						 	$valor=array('valor'=>'1','mensaje'=>$da);
+  						 	$js=json_encode($valor);
+  						 	return $js;
   						 }
 					}
-					else{echo "error";}
+					else{
+						$valor=array('valor'=>'0','mensaje'=>'error');
+  						 	$js=json_encode($valor);
+  						 	return $js;}
 				}
 				else {
 					if($strlen<10||$strlen>10){
-					echo "el numero es incorrecto";
+						$valor=array('valor'=>'0','mensaje'=>"el numero es incorrecto");
+  						 	$js=json_encode($valor);
+  						 	return $js;
 					}else{
-					echo $da;}
+						$valor=array('valor'=>'1','mensaje'=>$da);
+  						 	$js=json_encode($valor);
+  						 	return $js;
+					}
 				}				
 			}//fin de la funcion			
 
@@ -264,19 +278,20 @@
 
 
 			if($tipo=="string") {
-					formateado($de);	
+
+					echo formateado($de);	
 				}
 			
 			if ($tipo=="array"){
+				echo "{numeros: [";
 				foreach ($de as $key => $value) {
-					echo $key." - ";
 					formateado($value);
-					echo "\n";
+					echo ",";
+					$a=$key;
 				}
+				echo "{'total':'".($a+1)."'}]}";
 			}
-			else{
-				return "el tipo de dato no es compatible";
-			}
+			
 			
 		}// fin del verificador de numeros de telefono
 

@@ -251,4 +251,21 @@ $resultado=json_encode($nuevacuenta);
 echo $resultado;
 
 }
+
+if (isset($_POST['telefono'])) {
+
+	if(!empty($_POST['telefono'])){
+		$num=$_POST['telefono'];
+		numeromovil($num);
+	}
+}
+
+
+function numeromovil($d){
+	$A = new Validacion();
+	$rs=$A->Preparador($d,4,0,0);
+	echo $rs;
+}
+
+
 ?>

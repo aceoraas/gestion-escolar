@@ -174,92 +174,93 @@
     
 
     <div class='input-field col s12 l3'>
-    <input type='text' >
+    <input id='1nombre' type='text' >
     <label>Primer Nombre</label>
     </div>
 
     <div class='input-field col s12 l3'>
-    <input type='text' >
+    <input id='2nombre' type='text' >
     <label>Segundo Nombre</label>
     </div>
 
     <div class='input-field col s12 l3'>
-    <input type='text' >
+    <input id='1apellido'type='text' >
     <label>Primer Apellido</label>
     </div>
 
     <div class='input-field col s12 l3'>
-    <input type='text' >
+    <input id='2apellido' type='text' >
     <label>Segundo Apellido</label>
     </div>
 
     <div class='input-field col s12 l4'>
-    <input disabled="true" type='text' value="V-27226407" >
-    <label>Cedula</label>
+    <input id='cedulatext' disabled="true" type='text'>
     </div>
 
 
     <!--fecha de nacimiento picker-->
     <div class='input-field col s12 l4'>
     <i class='material-icons prefix'>today</i>
-    <input type='text'  class='datepicker'>
+    <input id="fecha_naci" type='text'  class='datepicker'>
     <label>Fecha de Nacimiento</label>
     </div>
 
     <div class='input-field col s12  l4'>
-    <select id=''>
+    <select id='genero'>
       <option disabled value="">Selecione su Sexo</option>
       <option value="M">Masculino</option>
       <option value="F">Femenino</option>
-      option
-      option
+      
     </select>
     <label>Genero</label>
     </div>
 
-    <div class='input-field col s12 l4'>
-    <i class='material-icons prefix'>mail</i>
-    <input type='email' >
-    <label>Correo</label>
+    <div id='divcorreo' class='input-field col s12 l4'>
+    <i id='icorreo' class='material-icons prefix'>mail</i>
+    <input id='email' type='email' >
+    <label id="labelcorreo" >Correo</label>
     </div>
 
-    <div class='input-field col s12 l4'>
-    <i class='material-icons prefix'>phone_iphone</i>
-    <input type='text' >
-    <label>Numero de su Telefono Movil</label>
+    <div id='divmovil' class='input-field col s12 l4'>
+    <i id='imovil' class='material-icons prefix'>phone_iphone</i>
+    <input id='movil' type='text' >
+    <label id="labelmovil" >Numero de Telefono Movil</label>
     </div>
-    <div class='input-field col s12 l4'>
-    <i class='material-icons prefix'>call</i>
-    <input type='text' >
-    <label>Numero de su Telefono Fijo</label>
+
+    <div id='divfijo' class='input-field col s12 l4'>
+    <i id='ifijo' class='material-icons prefix'>phone</i>
+    <input id='fijo' type='text' >
+    <label id="labelfijo" >Numero de Telefono Fijo</label>
     </div>
+
+
 
     <div class='input-field col s12  l3'>
-    <select id=''>
+    <select id='Estado'>
       <option disabled value="">Selecione un Estado</option>
     </select>
-    <label>Estado</label>
-    </div>
-    <div class='input-field col s12  l3'>
-    <select id=''>
-      <option disabled value="">Selecione una Ciudad</option>
-    </select>
-    <label>Ciudad</label>
-    </div>
-    <div class='input-field col s12  l3'>
-    <select id=''>
-      <option disabled value="">Selecione un Municipio</option>
-    </select>
-    <label>Municipio</label>
-    </div>
-    <div class='input-field col s12  l3'>
-    <select id=''>
-      <option disabled value="">Selecione una Parroquia</option>
-    </select>
-    <label>Parroquia</label>
+    <label>Genero</label>
     </div>
 
-<div class="divider"></div>
+   <div class='input-field col s12  l3'>
+    <select id='genero'>
+      <option disabled value="">Selecione una Ciudad</option>
+    </select>
+    <label>Genero</label>
+    </div><div class='input-field col s12  l3'>
+    <select id='genero'>
+      <option disabled value="">Selecione un Municipio</option>
+    </select>
+    <label>Genero</label>
+    </div>
+
+    <div class='input-field col s12  l3'>
+    <select id='genero'>
+      <option disabled value="">Selecione una Parroquia</option>
+    </select>
+    <label>Genero</label>
+    </div>
+
 
     <!--botones-->
  
@@ -319,5 +320,6 @@ fin del formulario-->
               <script type="text/javascript" src="../js/materialize.min.js"></script>
               <script type="text/javascript" src="../js/picker.js"></script>
               <script type="text/javascript" src="../js/registro.js"></script>
+              
         </html>
   

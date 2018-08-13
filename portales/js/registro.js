@@ -1,6 +1,6 @@
 /* PARA LA FECHA Y LA HORA*/
 
-vistas('2');
+vistas('0');
 var uci;
 
 $('.datepicker').pickadate({
@@ -16,7 +16,7 @@ $('.datepicker').pickadate({
        selectYears: 90,
        selectMonths: true,
        min: -32850,
-       max: true,
+       max: -6570,
        closeOnSelect: true, // Close upon selecting a date,
        container: undefined, // ex. 'body' will append picker to body
       });
@@ -38,7 +38,7 @@ Fin de accesorios
 Funciones
 */
 
-  var positivo=[7];
+  var positivo=[20];
   var nombre;
   var apellido;
   var estado;
@@ -120,6 +120,7 @@ $('#datoslaborales').show('slow');
                   console.log(data);
                   nombre=obj.nombre;
                   apellido=obj.apellido;
+                  estado=obj.edo;
                   cedula=cnacionalidad+"-"+ncedula;
                   positivo[2]=true;
               }
@@ -214,6 +215,7 @@ $('#datoslaborales').show('slow');
             else{
               if(datou!=''){
               CHECKET('7');
+              $('#labelusuario').text('USUARIO VALIDO');
               positivo[0]=true;  
               }else{
                 ERROR('7');
@@ -381,6 +383,7 @@ $('#datoslaborales').show('slow');
                             $('#divcedulap2').removeClass('l6').addClass('l3');
                             $('#dividunico').removeClass('l6').addClass('l4');
                             document.getElementById('name').value=nombre+' '+apellido;
+                            
                           
                           }else{
                             $('#name').hide();
@@ -449,6 +452,85 @@ $('#datoslaborales').show('slow');
   e=document.getElementById('id').value;
    window.open('../../procesos/pdf-/llave_recuperacion.php?'+'user='+a+'&ID='+e+'&key='+b+'&ps='+c+'&rs='+d,"llave","width=0,height=0");  
 }
+
+
+function datosp2(){
+  if (nombre!=null&&apellido!=null){
+  nombre=nombre.trim();
+  apellido=apellido.trim();
+  var divinombres= nombre.split(' ');
+  var tamanio= divinombres.length;
+  var separador=" ";
+  
+    var  nombreuno=divinombres[0];
+    for (var i =1; i<tamanio; i++) {
+     var nombredos=nombredos+" "+divinombres[i];
+     nombredos=nombredos.replace('undefined',"");
+     
+    }
+    var diviapellidos = apellido.split(' ');
+    tamanio = diviapellidos.length;
+    var apellidouno =  diviapellidos[0];
+    for (var i =1; i<tamanio; i++) {
+     var apellidodos=apellidodos+" "+diviapellidos[i];
+     apellidodos=apellidodos.replace('undefined',"");
+     
+    }
+
+  
+  document.getElementById('1nombre').value=nombreuno;
+  document.getElementById('2nombre').value=nombredos;
+  document.getElementById('1apellido').value=apellidouno;
+  document.getElementById('2apellido').value=apellidodos;
+  
+}
+ document.getElementById('cedulatext').value=cedula;
+}
+
+function validarEmail(email) {
+
+    expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    
+    if (!expr.test(email)){
+      ERROR(15);
+      $('#labelcorreo').text("El correo '"+email+"' es incorrecta.");
+      document.getElementById('email').value='';
+      positivo[12]=false;
+    }else
+      {
+      CHECKET(15);
+      $('#labelcorreo').text("Correo Confirmado");
+      positivo[12]=true;
+      }
+}
+
+function validarNumero(numero,tipo){
+  var datos= {telefono: numero};
+  $.ajax({
+
+          data: datos,
+          url:'../../procesos/validacion/validacion_registro.php',
+          type: 'post',
+          beforeSend: function () {
+            if (tipo==1){$("#labelmovil").html("Procesando, espere por favor...");}
+            if (tipo==2){$("#labelfijo").html("Procesando, espere por favor...");}
+         },success: function(data){
+          console.log(data);
+          var obj= JSON.parse(data);
+
+            if (obj.valor=='0'){
+              if (tipo==1) {ERROR(16);$("#labelmovil").text(obj.mensaje)}
+              if (tipo==2) {ERROR(17);$("#labelfijo").text(obj.mensaje)}    
+
+            }else{
+              if (tipo==1) {CHECKET(16); $("#labelmovil").text('Movil Confirmado'); document.getElementById('movil').value=obj.mensaje;}  
+              if (tipo==2) {CHECKET(17); $("#labelfijo").text('Fijo Confirmado'); document.getElementById('fijo').value=obj.mensaje;}
+            }
+            
+          }}  
+         );
+}
+
 /*
 FIN DE FUNCIONES
 
@@ -516,6 +598,97 @@ DISEÑO
     $('#iusuario').text('error');
 
   }
+  if (tipo=='8'){
+    //USUARIO
+    //$('#divusuario').removeClass('teal-text').addClass('red-text');
+    //$('#labelusuario').removeClass('teal-text').addClass('red-text');
+    //$('#iusuario').text('error');
+
+  }
+  if (tipo=='9'){
+    //USUARIO
+    //$('#divusuario').removeClass('teal-text').addClass('red-text');
+    //$('#labelusuario').removeClass('teal-text').addClass('red-text');
+    //$('#iusuario').text('error');
+
+  }
+  if (tipo=='10'){
+    //USUARIO
+    //$('#divusuario').removeClass('teal-text').addClass('red-text');
+    //$('#labelusuario').removeClass('teal-text').addClass('red-text');
+    //$('#iusuario').text('error');
+
+  }
+  if (tipo=='11'){
+    //USUARIO
+    //$('#divusuario').removeClass('teal-text').addClass('red-text');
+    //$('#labelusuario').removeClass('teal-text').addClass('red-text');
+    //$('#iusuario').text('error');
+
+  }
+  if (tipo=='12'){
+    //USUARIO
+    //$('#divusuario').removeClass('teal-text').addClass('red-text');
+    //$('#labelusuario').removeClass('teal-text').addClass('red-text');
+    //$('#iusuario').text('error');
+
+  }
+  if (tipo=='13'){
+    //USUARIO
+    //$('#divusuario').removeClass('teal-text').addClass('red-text');
+    //$('#labelusuario').removeClass('teal-text').addClass('red-text');
+    //$('#iusuario').text('error');
+
+  }
+  if (tipo=='14'){
+    //USUARIO
+    //$('#divusuario').removeClass('teal-text').addClass('red-text');
+    //$('#labelusuario').removeClass('teal-text').addClass('red-text');
+    //$('#iusuario').text('error');
+
+  }
+  if (tipo=='15'){
+    //CORREO
+    $('#divcorreo').removeClass('teal-text').addClass('red-text');
+    $('#labelcorreo').removeClass('teal-text').addClass('red-text');
+    $('#icorreo').text('error');
+
+  }
+  if (tipo=='16'){
+    //NUMERO MOVIL
+    $('#divmovil').removeClass('teal-text').addClass('red-text');
+    $('#labelmovil').removeClass('teal-text').addClass('red-text');
+    $('#imovil').text('error');
+
+  }
+  if (tipo=='17'){
+    //numero fijo
+    $('#divfijo').removeClass('teal-text').addClass('red-text');
+    $('#labelfijo').removeClass('teal-text').addClass('red-text');
+    $('#ifijo').text('error');
+
+  }
+  if (tipo=='18'){
+    //USUARIO
+    //$('#divusuario').removeClass('teal-text').addClass('red-text');
+    //$('#labelusuario').removeClass('teal-text').addClass('red-text');
+    //$('#iusuario').text('error');
+
+  }
+  if (tipo=='19'){
+    //USUARIO
+    //$('#divusuario').removeClass('teal-text').addClass('red-text');
+    //$('#labelusuario').removeClass('teal-text').addClass('red-text');
+    //$('#iusuario').text('error');
+
+  }
+  if (tipo=='20'){
+    //USUARIO
+    //$('#divusuario').removeClass('teal-text').addClass('red-text');
+    //$('#labelusuario').removeClass('teal-text').addClass('red-text');
+    //$('#iusuario').text('error');
+
+  }
  };
 
  function CHECKET(tipo){
@@ -560,6 +733,24 @@ DISEÑO
     $('#divusuario').removeClass('red-text').addClass('teal-text');
     $('#labelusuario').removeClass('red-text').addClass('teal-text');
     $('#iusuario').text('checket');
+  }
+  if (tipo=='15'){
+    // correo
+    $('#divcorreo').removeClass('red-text').addClass('teal-text');
+    $('#labelcorreo').removeClass('red-text').addClass('teal-text');
+    $('#icorreo').text('checket');
+  }
+  if (tipo=='16'){
+    // numero movil
+    $('#divmovil').removeClass('red-text').addClass('teal-text');
+    $('#labelmovil').removeClass('red-text').addClass('teal-text');
+    $('#imovil').text('checket');
+  }
+  if (tipo=='17'){
+    // numero fijo
+    $('#divfijo').removeClass('red-text').addClass('teal-text');
+    $('#labelfijo').removeClass('red-text').addClass('teal-text');
+    $('#ifijo').text('checket');
   }
 
  };
@@ -618,13 +809,45 @@ $('#nacionalidad').on('change',function () {
   $('#icedula').text('account_box');
 });
 
+$('#email').on('change',function(){
+    var email= document.getElementById('email').value;
+    validarEmail(email);
+});
+
+$('#movil').on('change',function(){
+  var numero= document.getElementById('movil').value;
+  validarNumero(numero,1);
+});
+
+$('#fijo').on('change',function(){
+  var numero= document.getElementById('fijo').value;
+  validarNumero(numero,2);
+});
+$('#movil').on('keyup',function(){
+  var key=document.getElementById('movil').value;
+  var tamanio=key.length;
+  key=(key*10)/10;
+    if (tamanio==4){document.getElementById('movil').value=key+"-";}
+});
+
+$('#fijo').on('keyup',function(){
+  var key=document.getElementById('fijo').value;
+  var tamanio=key.length;
+  key=(key*10)/10;
+    if (tamanio==4){document.getElementById('fijo').value=key+"-";}
+});
+
+
+
 
 $('#btnpaso1').on('click',function(){
       COMPROBARCAMPOS();
 });
 
 $('#btnpaso2').on('click',function(){
+  datosp2();
   vistas('2');
+
 });
 $('#btnatras3').on('click',function(){
   vistas('1');
@@ -639,4 +862,6 @@ $('#btnatras4').on('click',function(){
 
 $('#bajarllave').on('click',function(){
   enviarllave();
+
 });
+
