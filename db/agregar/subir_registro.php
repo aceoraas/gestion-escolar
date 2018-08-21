@@ -18,7 +18,8 @@ class  Upload_Usuarios_DB
 				'pwd'=>$dato['pwd'],
 				'pregunta_secreta'=>$dato['ps'],
 				'respuesta_secreta'=>$dato['rs'],
-				'C_U'=>$dato['cu']
+				'C_U'=>$dato['cu'],
+				'estado'=>'espera'
 
 			]);
 			// retorna el id del documento insertado

@@ -2,13 +2,13 @@
 <html>
 <head>
   
-<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+
 
 	 <title>REGISTRO</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link type="text/css" rel="stylesheet" href="../css/materialize.css"  media="screen,projection"/>            
-<style>body{overflow:scroll;background-color:#017c77;color:#FFF;}</style>
+<style>body{overflow:scroll;background-color:#017c77;color:#FFF; }</style>
 </head>
 
 <body>
@@ -173,24 +173,24 @@
   <!--nombres y apellidos-->
     
 
-    <div class='input-field col s12 l3'>
+    <div id='divnombre1' class='input-field col s12 l3'>
     <input id='1nombre' type='text' >
-    <label>Primer Nombre</label>
+    <label id="labelnombre1">Primer Nombre</label>
     </div>
 
-    <div class='input-field col s12 l3'>
+    <div id='divnombre2'class='input-field col s12 l3'>
     <input id='2nombre' type='text' >
-    <label>Segundo Nombre</label>
+    <label id="labelnombre2">Segundo Nombre</label>
     </div>
 
-    <div class='input-field col s12 l3'>
+    <div id='divnombre3'class='input-field col s12 l3'>
     <input id='1apellido'type='text' >
-    <label>Primer Apellido</label>
+    <label id="labelnombre3">Primer Apellido</label>
     </div>
 
-    <div class='input-field col s12 l3'>
+    <div id='divnombre4'class='input-field col s12 l3'>
     <input id='2apellido' type='text' >
-    <label>Segundo Apellido</label>
+    <label id="labelnombre4">Segundo Apellido</label>
     </div>
 
     <div class='input-field col s12 l4'>
@@ -199,20 +199,20 @@
 
 
     <!--fecha de nacimiento picker-->
-    <div class='input-field col s12 l4'>
-    <i class='material-icons prefix'>today</i>
+    <div id='divcalendar' class='input-field col s12 l4'>
+    <i id='icalendar' class='material-icons prefix'>today</i>
     <input id="fecha_naci" type='text'  class='datepicker'>
-    <label>Fecha de Nacimiento</label>
+    <label id="labelcalendar">Fecha de Nacimiento</label>
     </div>
 
-    <div class='input-field col s12  l4'>
+    <div id='divgenero' class='input-field col s12  l4'>
     <select id='genero'>
-      <option disabled value="">Selecione su Sexo</option>
+      <option value='' disabled selected >Selecione su Sexo</option>
       <option value="M">Masculino</option>
       <option value="F">Femenino</option>
       
     </select>
-    <label>Genero</label>
+    <label id="labelgenero">Genero</label>
     </div>
 
     <div id='divcorreo' class='input-field col s12 l4'>
@@ -234,32 +234,12 @@
     </div>
 
 
-
-    <div class='input-field col s12  l3'>
-    <select id='Estado'>
-      <option disabled value="">Selecione un Estado</option>
-    </select>
-    <label>Genero</label>
+     <div id='divdir' class='input-field col s12 l12'>
+    <i id='idir' class='material-icons prefix'>mapa</i>
+    <input  id='dirdetalle' type='text' placeholder="Estado, Municipio, Ciudad, Parroquia, Sector, Calle, Casa">
+    <label id="labeldir" >Dirección</label>
     </div>
 
-   <div class='input-field col s12  l3'>
-    <select id='genero'>
-      <option disabled value="">Selecione una Ciudad</option>
-    </select>
-    <label>Genero</label>
-    </div><div class='input-field col s12  l3'>
-    <select id='genero'>
-      <option disabled value="">Selecione un Municipio</option>
-    </select>
-    <label>Genero</label>
-    </div>
-
-    <div class='input-field col s12  l3'>
-    <select id='genero'>
-      <option disabled value="">Selecione una Parroquia</option>
-    </select>
-    <label>Genero</label>
-    </div>
 
 
     <!--botones-->
@@ -293,12 +273,134 @@
   <p><big><b>Lea con detenimiento y rellene todos los campos requerido para su correcta inscripcion en el sistema de gestion escolar de la unidad educativa angel celestino bello, estos datos son de gran importancia y seran revisados para su posible aprobación, tenga en cuenta que al finalizar debera ingresar con su cuenta al sistema de gestion escolar para obtenga informacion del estado de su solicitud y habilitacion del sistema en su area.</b><br></big></p></div></div>
 <br>
 <div class="divider"></div>
-<div class="divider"></div>
+<div class='row'>
+<div class='col s12 l12'>
+  
+  <div class='col s12 l12'>
+
+    <div class='input-field col s12  l6'>
+    <select id='glaboral'>
+      <option value=''disabled selected>Selecione su area laboral</option>
+
+      <option value="Docente">Docente</option>
+
+      <option value="Administrativo">Administrativo</option>
+
+      <option value="Salud">Salud</option>
+      <option value="Obrero">Obrero</option>
+
+      <option value="Directivo">Directivo</option>
+
+      <option value="Lopna">Lopna</option>
+      
+    </select>
+    <label>Tipo de personal</label>
+    </div>
+
+
+    <div id='dtd'class='input-field col s12  l6'>
+    <select id='tdocente'>
+      <option value='' disabled selected>Selecione su area</option>
+      <option value="1">Docente Particular</option>
+      <option value="2">Especialidad</option>
+    </select>
+    <label>Area</label>
+    </div>
+
+    <div id='dta'class='input-field col s12  l6'>
+    <select id='tadministrativo'>
+      <option value='' disabled selected>Selecione su Area</option>
+      <option value="Secretaria/o">Secretaria</option>
+      <option value="otro">Otro</option>
+    </select>
+    <label>Area</label>
+    </div>
+
+  <div id='dtdir'class='input-field col s12  l6'>
+    <select id='tdirectivo'>
+      <option value='' disabled selected>Selecione su Area</option>
+      <option value="Dirección">Direccion</option>
+      <option value="Subdireción">Subdirección</option>
+    </select>
+    <label>Area</label>
+    </div>
+
+
+    <div id='dto'class='input-field col s12  l6'>
+    <select id='tobrero'>
+      <option value='' disabled selected>Selecione su Area</option>
+      <option value="obrero">Obrero/a</option>
+      <option value="cocinero">Cocinera de la Patria</option>
+      <option value="otro">Otro</option>
+    </select>
+    <label>Area</label>
+    </div>
+
+<div id="docentep">
+
+  <div class='input-field col s12  l6'>
+    <select id='docenteparticular'>
+      <option value=''disabled selected >Selecione el grado</option>
+      <option value="Inicial">Inicial</option>
+      <option value="1">1 er</option>
+      <option value="2">2 do</option>
+      <option value="3">3 ero</option>
+      <option value="4">4 to</option>
+      <option value="5">5 to</option>
+      <option value="6">6 to</option>
+    </select>
+    <label>Grado</label>
+    </div>
+
+    <div id='divsec' class='input-field col s12  l6'>
+    <select id='docenteparticular2'>
+      <option value=''disabled selected >Selecione la sección</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+      <option value="E">E</option>
+
+    </select>
+    <label>Sección</label>
+    </div>  
+
+</div>
+
+
+
+<div id="docentee">
+
+    <div class='input-field col s12  l6'>
+    <select id='docenteespecialidad'>
+      <option value=''disabled selected>Selecione su especialidad</option>
+      <option value="Salud">Salud</option>
+      <option value="Educacion fisica/ Deporte">Educacion fisica / Deporte</option>
+      <option value="Ajedrez">Ajedrez</option>
+    </select>
+    <label>Especialidad</label>
+    </div>       
+</div>
+
+
+
+<div id='dotro' class='input-field col s12 l6'>
+    <input id='otro' type='text' >
+    <label>Otro</label>
+    </div>
+        
+    <!--botones-->
+
+    </div>
+
+
+
 <div class='input-field col s12  offset-l2 l3'>
 <a id='btnatras4' class='waves-effect waves-light btn'>atras</a>
 </div>
+
 <div class='input-field col s12  offset-l2 l3'>
-<a id='btnRegistrar' class='waves-effect waves-light btn red'>Registrar</a>
+<a data-target="modal1" id='btnRegistrar' class='waves-effect waves-light btn red btn modal-trigger'>Registrar</a>
 </div>
 </div></div>
 <br>
@@ -306,6 +408,31 @@
 </center>
 </div>
 
+
+
+
+
+  <!-- Modal Structure -->
+  <div id="modal1" class=" black-text modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>¿Sus datos estan Correctos?</h4>
+      <p>Nombre: <h6></h6></p>
+      <p>Apellido: <h6></h6></p>
+      <p>Cedula: <h6></h6></p>
+      <p>Fecha de Nacimiento: <h6></h6></p>
+      <p>Numero de Movil: <h6></h6></p>
+      <p>Numero de Casa: <h6></h6></p>
+      <p>Correo: <h6></h6></p>
+      <p>Dirección: <h6></h6></p>
+      <p>Tipo de Cargo: <h6></h6></p>
+      <p>Area: <h6></h6></p>    
+    </div>
+    <div class="modal-footer">
+      
+      <a id="datosm" class="white-text modal-action modal-close waves-effect waves-green btn-flat red">INCORRECTO</a>
+      <a id="deacuerdo" class="white-text modal-action modal-close waves-effect waves-green btn-flat teal">Correcto</a>
+    </div>
+  </div>
 <!--
 <div id="error404" hidden="false">
 <style>body{background-image: url('../../assets/img/imgs/rocket.gif'),url('../../assets/img/imgs/giphy2.gif');background-repeat: no-repeat, repeat;text-align:center;}div{display: none;}</style></div></div></div><br><br><br><br><br><br><br><br><br>

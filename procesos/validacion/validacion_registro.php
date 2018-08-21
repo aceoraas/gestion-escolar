@@ -107,6 +107,16 @@ $CNE_respuesta;
 
 
 // * Validacion de usuarios en base de datos
+if (isset($_POST['esta'])) {
+	if (!empty($_POST['esta'])) {
+		$b_esta= new UsuariosDB();
+		$dato=$_POST['esta'];
+		$r=$b_esta->estadoUser($dato);
+		echo $r;
+	}
+}
+
+
 
 if (isset($_POST['verificar'])) {
 	if (!empty($_POST['verificar'])) {
@@ -120,7 +130,7 @@ if (isset($_POST['verificar'])) {
 		$dato=array('C_U'=>$_POST['c_u']);
 		$result=$b_u->buscarUsuario($dato);
 			if ($result>0) {
-				echo 2;
+				echo '2';
 			}else{
 				if (preg_match('/[ *-@^+!~¿"!#$&%=?°¬|<()-.,;:ñ~`]/',$user)) {
 				echo '0';

@@ -20,19 +20,18 @@ class  UsuariosDB{
 		// PASAR EL _ID DE USUARIO 
 		public function buscarHash($data)
 		{
+			
 			$respuesta=$this->db->find($data,array('pwd'=>1));
 			return $respuesta;
 		}
-		public function estadoUser($c_u)
+		public function estadoUser($a)
 		{
-			$respuesta=$this->db->find($c_u);
-			return $respuesta;
+			$respuesta=$this->db->find(["C_U"=>$a],['limit'=>1,'projection'=>['estado'=> 1],]);
+			foreach ($respuesta as $estado){
+				$e=$estado->estado;
+			}
+			return $e;
 		}
 
 }
-
-//$a=new UsuariosDB();
-//$text=array(["C_U"=>"27226407"],["C_U"=>"1"]);
-//$R=$a->estadoUser($text);
-//print_r($R);
 ?>

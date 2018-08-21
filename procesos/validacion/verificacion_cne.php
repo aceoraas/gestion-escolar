@@ -12,8 +12,8 @@ class Cne {
         curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (X11; Linux i686; rv:32.0) Gecko/20100101 Firefox/32.0');
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,TRUE);
         curl_setopt($ch,CURLOPT_FRESH_CONNECT,TRUE);
-        curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,0.5);
-        curl_setopt($ch,CURLOPT_TIMEOUT,0.1);
+        curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,1);
+        curl_setopt($ch,CURLOPT_TIMEOUT,1);
         $html=curl_exec($ch);
 
      if($html==false){
