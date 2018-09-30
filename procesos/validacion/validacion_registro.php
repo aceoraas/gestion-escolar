@@ -116,7 +116,12 @@ if (isset($_POST['esta'])) {
 	}
 }
 
-
+if (isset($_POST['sp'])) {
+	if (!empty($_POST['sp'])) {
+		$a=json_decode($_POST['sp'],true);
+		savedp($a);
+	}
+}
 
 if (isset($_POST['verificar'])) {
 	if (!empty($_POST['verificar'])) {
@@ -277,5 +282,11 @@ function numeromovil($d){
 	echo $rs;
 }
 
+function savedp($d){
 
+	$call= new Upload_dp_db();
+	$call->datospersonal($d);
+	return $call;
+
+}
 ?>

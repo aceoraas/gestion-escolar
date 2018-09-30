@@ -31,5 +31,34 @@ class  Upload_Usuarios_DB
 		}
 }
 
+class Upload_dp_db{
+	function __construct(){
+		$this->db = ( new MongoDB\Client )->sistema->personal;
+	}
+
+	public function datospersonal($dato=[])
+	{
+		if(empty($dato))
+		{
+				return false;
+		}
+
+		$save_dp= $this->db->insertOne([$dato]);
+		$save_dp->getInsertedId();
+		if (isset($save_dp)) {
+			if (!empty($save_dp)) {
+				
+					$true = array('valor' => 1);
+					return json_encode($true);
+			}
+				else{
+						$true = array('valor' => 0);
+						return json_encode($true);
+				}
+		}
+
+	}
+}
+
 
 ?>

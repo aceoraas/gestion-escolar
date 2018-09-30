@@ -67,14 +67,15 @@
      </div><br>
            
     <!--Pregunta de seguridad-->
+    <dr>
+        <br>
       <div id='divseguridad1' class='input-field col s12 l6'>
       <i id='iseguridad1'class='material-icons prefix'>security</i>
       <input id='Pregunta' type='text' >
       <label id='labelseguridad1'>Pregunta de seguridad</label>
       </div>
       <dr>
-        
-      </dr>
+        <br>
       <div id='divseguridad2' class='input-field col s12 l6'>
       <i id='iseguridad2' class='material-icons prefix'>security</i>
       <input id='pregunta2' type='text'>
@@ -310,7 +311,7 @@
     <div id='dta'class='input-field col s12  l6'>
     <select id='tadministrativo'>
       <option value='' disabled selected>Selecione su Area</option>
-      <option value="Secretaria/o">Secretaria</option>
+      <option value="Secretaria">Secretaria</option>
       <option value="otro">Otro</option>
     </select>
     <label>Area</label>
@@ -319,8 +320,8 @@
   <div id='dtdir'class='input-field col s12  l6'>
     <select id='tdirectivo'>
       <option value='' disabled selected>Selecione su Area</option>
-      <option value="Dirección">Direccion</option>
-      <option value="Subdireción">Subdirección</option>
+      <option value="Direccion">Dirección</option>
+      <option value="Subdireccion">Subdirección</option>
     </select>
     <label>Area</label>
     </div>
@@ -375,7 +376,7 @@
     <select id='docenteespecialidad'>
       <option value=''disabled selected>Selecione su especialidad</option>
       <option value="Salud">Salud</option>
-      <option value="Educacion fisica/ Deporte">Educacion fisica / Deporte</option>
+      <option value="Educacion fisica">Educacion fisica / Deporte</option>
       <option value="Ajedrez">Ajedrez</option>
     </select>
     <label>Especialidad</label>
@@ -416,16 +417,17 @@
   <div id="modal1" class=" black-text modal modal-fixed-footer">
     <div class="modal-content">
       <h4>¿Sus datos estan Correctos?</h4>
-      <p>Nombre: <h6></h6></p>
-      <p>Apellido: <h6></h6></p>
-      <p>Cedula: <h6></h6></p>
-      <p>Fecha de Nacimiento: <h6></h6></p>
-      <p>Numero de Movil: <h6></h6></p>
-      <p>Numero de Casa: <h6></h6></p>
-      <p>Correo: <h6></h6></p>
-      <p>Dirección: <h6></h6></p>
-      <p>Tipo de Cargo: <h6></h6></p>
-      <p>Area: <h6></h6></p>    
+      <p>Nombre:<div style="color: red;" id="mn"></div></p>
+      <p>Apellido: <div style="color: red;" id="ma"></div></p>
+      <p>Cedula: <div style="color: red;" id="mc"></div></p>
+      <p>Genero: <div style="color: red;" id="mg"></div></p>
+      <p>Fecha de Nacimiento: <div style="color: red;" id="mfn"></div></p>
+      <p>Numero de Movil: <div style="color: red;" id="mtm"></div></p>
+      <p>Numero de Casa: <div style="color: red;" id="mtf"></div></p>
+      <p>Correo: <div style="color: red;" id="mm"></div></p>
+      <p>Dirección: <div style="color: red;" id="md"></div></p>
+      <p>Tipo de Cargo: <div style="color: red;" id="mt"></div></p>
+      <p>Area: <div style="color: red;" id="mta"></div></p>    
     </div>
     <div class="modal-footer">
       

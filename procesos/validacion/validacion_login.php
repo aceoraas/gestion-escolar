@@ -1,5 +1,7 @@
 <?php 
  session_start();
+
+ echo "hola, debes verificar la cuenta usuario y contraseña, recuerda que los usuarios tienen un estado de su cuenta que es renegado, en caso de estarlo debes avisarle de que no puede usar su cuenta, en caso de haber 4 intentos fallidos anunciarles si desean cambiar su usuario o contraseña y mostrar un contador de intentos restantes 3 para introducir el id y la llave, en caso de fallar 3 veces, notificarle que lo intente en 3 horas en casod e fallar una vez mas en 24 horas o dirigirse al departamento de informatica para desbloquearlos, todo esto en el mismo login";
  /*
   * esta clase valida que el usuario sea el usuario correcto y se redireccione 
   *//*

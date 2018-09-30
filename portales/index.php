@@ -1,19 +1,11 @@
-<?php
-session_start();
-if($_SESSION['inicia']== true){
-    header("location: ".$_SESSION['url']."?id=".base64_encode($_SESSION['u_id']));
-}
-?>
-
 <!DOCTYPE html>
 <html>
+<!--login de sistema de gestion escolar-->
 <head>
-    <title>INICIO</title>
-	<!--login de sistema de gestion escolar-->
-	<meta charset="utf-8"><!--conpatible con letras ñ o acentos-->
-	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>SISTEMA</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
 	<style >
 		body{
 			overflow:scroll;
@@ -22,51 +14,86 @@ if($_SESSION['inicia']== true){
 		}
 	</style>
 </head>
-<!--EN EL BODY SE VA A INCLUIR UN FORMULARIO QUE SERA EL INICIO DE SESION DEL SISTEMA-->
+
 <body>
  <!--titulo de inicio-->
     <div style="margin-top: 5%" class="container">
-        <div >
-            <div >
-                <center> <!--contenido centrado-->
-                    <!-- AQUI PUEDE IR TANTO UNA PALABRA O UNA IMAGEN COMO LOGOTIPO-->
-                    <h2>ÁNGEL CELESTINO BELLO</h2>
-                    <!--AQUI INICIA EL FORMULARIO-->	
-                    <form autocomplete="off"  action="../procesos/validacion_login.php" method="post" accept-charset="utf-8" >
-                        <!--inputs para inicio-->
-                        <div style="width: 76%;" class="row">
-                            <div class="input-field">
-                                <i class="material-icons prefix">account_circle</i>
-                                <input type="text" name="user" placeholder="Usuario">
-                            </div>
-                            <div class="input-field">
-                                <i class="material-icons prefix">dialpad</i>
-                                <input type="password" name="pass" placeholder="Contraseña">
-                            </div>
-                        </div> 
-                <br>
-                    <input type="submit" value="Entrar"  class="btn red">
-                    </form>
-                    <!--se finaliza el formulario de inicio de sesion-->	
-                <br>
-                <div>
-                    <p>
-                        <h6>
-                            Desarrollado por: Ricardo Acero, Ramon Salazar, Ricardo Marin, para la aprobación del Proyecto Socio Tecnologico del T2, en la UPTJAA.
-                        </h6>
-                    </p>
-                </center>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div>
+    <div>
     <center>
-    <div class="row" >
-        <div class="col s12 m4" >
-        <a class="btn" href="registro/index.php">Registrarse</a>
-        </div>
-        </center>
-         <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
+    <!--IDENTIFICACION DEL SITIO-->
+    <h4>U.E.B ÁNGEL CELESTINO BELLO</h4>
+        
+    <!--FORMULARIO-->	
+    <form autocomplete="off"  action="#hola" method="post" accept-charset="utf-8" >
+    
+     <!--inputs para INGRESAR-->
+
+    <div style="width: 70%;" class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input type="text" name="user" placeholder="Usuario">
+    </div>
+    
+    <div class="input-field col s12">
+    <i class="material-icons prefix">dialpad</i>
+    <input type="password" name="pass" placeholder="Contraseña">
+    </div>
+
+    <!--botones de login-->
+    </div> 
+    <br>
+    <div class="row">
+    <div class="col s12 l5" >
+    <input type="submit" id="btnentrar" value="Entrar"  class="btn red">
+    </div>
+    <div class="col s12 l7" >
+    <a class="btn grey" href="recuperar">Olvide mi usuario o contraseña</a>
+    </div>
+    </div>
+    </form>
+    </center>
+    <br>
+
+    <!--Cartelera informativa-->	
+
+     <div class=" row">
+      <div >
+      <center>
+        <div class="card-content">
+         <div>
+         <h6><b><i><div id="Cartelera-titulo"></div></i></b></h6>
+         </div>
+      </center>
+
+        <div id="Cartelera-contenido"></div>
+     
+     </div>
+     </div>
+    
+
+
+    <!--botones para otras opciones del sistema-->
+    <center>
+    <div class="row">
+    
+    <div class="col s12 l6" >  
+    <a class="btn" href="registro/index.php">Nueva Cuenta</a>
+    </div>
+    
+    <div class="col s12 l6" >
+    <a class="btn" href="##">Asistencia Trabajadores</a>
+    </div>
+
+    </center>
+
+    <br><br><br><br><br><br>            
+
+
+    <!--scripts-->
+        
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>

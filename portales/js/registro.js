@@ -73,7 +73,7 @@ $('#datospersonales').hide('slow');
 $('#datoslaborales').show('slow');
 }
 }
-
+var trabajo=[4];
 function vlaboral(d){
 
   if (d=='Docente') {
@@ -83,10 +83,22 @@ function vlaboral(d){
         if (o=='1'){
           $('#docentep').show();
           $('#docentee').hide();
+          $('#docenteparticular2').on('change',function(){
+          trabajo[0]="Docente";
+          trabajo[1]="Docente Particular";
+          trabajo[2]=document.getElementById('docenteparticular').value;
+          trabajo[3]=document.getElementById('docenteparticular2').value;
+            
+          });
         $('#docenteparticular').on('change',function(){
           var i= document.getElementById('docenteparticular').value;
           if (i=='Inicial'){
             $('#divsec').hide();
+          trabajo[0]="Docente";
+          trabajo[1]="Docente Particular";
+          trabajo[2]=document.getElementById('docenteparticular').value;
+          trabajo[3]="";
+            
           }
         });
           
@@ -243,14 +255,14 @@ function vlaboral(d){
             $("#labelcedula").html("Procesando, espere por favor...");
          },success: function(data){
           obj = JSON.parse(data); 
-           
+           console.log(data);
             //verifica el booleano de servidor.
            if(obj.valor=='1'||obj.valor=='0'||obj.valor=='3') {
                 // mensaje  cedula valida.
               if(obj.valor=='1'){
                 CHECKET('2');
                 cedula=cnacionalidad+"-"+ncedula;
-                console.log(cedula);
+                
                 positivo[2]=true;
               }
               //mensaje cedula invalidado
@@ -260,7 +272,7 @@ function vlaboral(d){
               }
               if (obj.valor=='3'){
                   CHECKET('2');
-                  console.log(data);
+                  
                   nombre=obj.nombre;
                   apellido=obj.apellido;
                   estado=obj.edo;
@@ -636,6 +648,7 @@ if (contra1.length<6){
   c=document.getElementById('ps').value;
   d=document.getElementById('rs').value;
   e=document.getElementById('id').value;
+  
    window.open('../../procesos/pdf-/llave_recuperacion.php?'+'user='+a+'&ID='+e+'&key='+b+'&ps='+c+'&rs='+d,"llave","width=0,height=0");  
 }
 
@@ -738,15 +751,85 @@ function validarcampos2(){
     if (test[i]==''){
       ERROR((8+i));
       positivo[(8+i)]=false;
-      console.log(positivo[(8+i)]);
+      
     }
     else{
       CHECKET((8+i));
       positivo[(8+i)]=true;
-      console.log(positivo[(8+i)]);
+      
     }
   }
 }
+var jsonwork="none";
+function laboral(){
+var tipowork= document.getElementById('glaboral').value;
+
+if (tipowork=="Docente"){
+  var areawork= document.getElementById('tdocente').value;
+  if (areawork=="1"){
+      var gradoprof= document.getElementById('docenteparticular').value;
+      if (gradoprof=="Inicial"){
+        jsonwork='{"TIPO":"'+tipowork+'","AREA":"'+gradoprof+'"}';     
+      }else{
+        
+        var seccionprof= document.getElementById('docenteparticular2').value;
+       
+        jsonwork='{"TIPO":"'+tipowork+'","AREA":"Particular","SECCION":"'+seccionprof+'","GRADO":"'+gradoprof+'"}';
+      }
+  }
+  if (areawork=="2") {
+      var especialidad= document.getElementById('docenteespecialidad').value;
+      jsonwork='{"TIPO":"'+tipowork+'","AREA":"Especialidad","MATERIA":"'+especialidad+'"}';
+  }
+}
+if (tipowork=="Administrativo"){
+  var areawork=document.getElementById('tadministrativo').value;
+  
+  if (areawork=="Secretaria"){
+    jsonwork='{"TIPO":"'+tipowork+'","AREA":"'+areawork+'"}';
+  }
+  
+  if (areawork=="otro"){
+    var campootro=document.getElementById('otro').value;
+    jsonwork='{"TIPO":"'+tipowork+'","AREA":"otro-'+campootro+'"}';
+    
+  }
+}
+
+if (tipowork=="Salud"){
+  jsonwork='{"TIPO":"'+tipowork+'","AREA":"'+tipowork+'"}';
+}
+
+if (tipowork=="Obrero"){
+  var areawork=document.getElementById('tobrero').value;
+  if (areawork=="obrero"){
+    jsonwork='{"TIPO":"'+tipowork+'","AREA":"'+areawork+'"}';
+  
+  }
+  if (areawork=="cocinero"){
+    jsonwork='{"TIPO":"'+tipowork+'","AREA":"'+areawork+'"}';
+  }
+  if (areawork=="otro") {
+    var campootro=document.getElementById('otro').value;
+  jsonwork='{"TIPO":"'+tipowork+'","AREA":"otro-'+campootro+'"}';
+  }
+}
+if (tipowork=="Directivo"){
+  var areawork= document.getElementById('tdirectivo').value;
+  if (areawork=="Direccion"){
+    jsonwork='{"TIPO":"'+tipowork+'","AREA":"'+areawork+'"}';
+  }
+  if (areawork=="Subdireccion"){
+    jsonwork='{"TIPO":"'+tipowork+'","AREA":"'+areawork+'"}';
+  }
+}
+
+if (tipowork=="Lopna"){
+  jsonwork='{"TIPO":"'+tipowork+'","AREA":"'+tipowork+'"}';
+}
+
+}
+
 
 /*
 FIN DE FUNCIONES
@@ -1108,7 +1191,7 @@ $('#fijo').on('keyup',function(){
   var key=document.getElementById('fijo').value;
   var tamanio=key.length;
   key=(key*10)/10;
-  if (tamanio>=3&&tamanio<4){document.getElementById('fijo').value=key+"-";}
+  if (tamanio==4){document.getElementById('fijo').value=key+"-";}
 });
 
 $('#glaboral').on('change',function(){
@@ -1183,36 +1266,60 @@ $('#datosm').on('click',function(){
 alert('Revise con detenimiento los datos que pueda modificar, los datos de la creacion de cuenta son unicos y no son modificables, en caso de error debera eliminar la cuenta, en cambio los datos personales podra modificarlos de manera inmediata antes de registrar sus datos personales en su cuenta, para esto podra usar los botones "Atras" y/o "Siguiente". Si existe alguna queja o duda informelo a al departamento de Dirección.');
 
 }); 
+var informacionpersonal="none";
+$('#btnRegistrar').on('click',function(){
+  laboral();
+  var n1=document.getElementById('1nombre').value;
+  var n2=document.getElementById('2nombre').value;
+  var a1=document.getElementById('1apellido').value;
+  var a2=document.getElementById('2apellido').value;
+  var fn=document.getElementById('fecha_naci').value;
+  var g=document.getElementById('genero').value;
+  var m=document.getElementById('email').value;
+  var tm= document.getElementById('movil').value;
+  var tf=document.getElementById('fijo').value;
+  var d=document.getElementById('dirdetalle').value;
+
+
+  informacionpersonal='{"Cedula" : "'+cedula+'","PNombre" :"'+n1+'","SNombre" :"'+n2+'","PApellido" : "'+a1+'","SApellido" : "'+a2+'","Fecha_Nacimiento" : "'+fn+'","Sexo" : "'+g+'","Correo" : "'+m+'","Numero_contacto" : {"Fijo" : "'+tf+'","Movil" : "'+tm+'"},"Direccion" : "'+d+'","CARGO" : '+jsonwork+'}';
+  
+  var obj=  JSON.parse(informacionpersonal);
+  var escribe;
+  
+  escribe=document.getElementById("mn").innerHTML="<h6>"+obj.PNombre+' '+obj.SNombre+"</h6>";
+  escribe=document.getElementById('ma').innerHTML="<h6>"+obj.PApellido+' '+obj.SApellido+"</h6>";
+  escribe=document.getElementById('mc').innerHTML="<h6>"+obj.Cedula+"</h6>";
+  escribe=document.getElementById('mfn').innerHTML="<h6>"+obj.Fecha_Nacimiento+"</h6>";
+  escribe=document.getElementById('mtm').innerHTML="<h6>"+obj.Numero_contacto.Movil+"</h6>";
+  escribe=document.getElementById('mtf').innerHTML="<h6>"+obj.Numero_contacto.Fijo+"</h6>";
+  escribe=document.getElementById('mm').innerHTML="<h6>"+obj.Correo+"</h6>";
+  escribe=document.getElementById('md').innerHTML="<h6>"+obj.Direccion+"</h6>";
+  escribe=document.getElementById('mt').innerHTML="<h6>"+obj.CARGO.TIPO+"</h6>";
+  if (obj.CARGO.MATERIA==undefined) {obj.CARGO.MATERIA=" ";}
+  if (obj.CARGO.GRADO==undefined) {obj.CARGO.GRADO=" ";}
+  if (obj.CARGO.SECCION==undefined) {obj.CARGO.SECCION=" ";}
+  
+  escribe=document.getElementById('mta').innerHTML="<h6>"+obj.CARGO.AREA+' '+obj.CARGO.MATERIA+' '+obj.CARGO.GRADO+' '+obj.CARGO.SECCION+"</h6>";
+  escribe=document.getElementById('mg').innerHTML="<h6>"+obj.Sexo+"</h6>";
+  
+});
 
 $('#deacuerdo').on('click',function(){
-/*
-var TRABAJO='{"TIPO":"'++'","AREA":"'++'","SECCION":"'++'","GRADO":"'++'"}';
-var informacionpersonal='{"Cedula" : "'+cedula+'","PNombre" :"'+ +'","SNombre" :"'+ +'","PApellido" : "'+ +'","SApellido" : "'++'","Fecha_Nacimiento" : "'++'","Sexo" : "'++'","Correo" : "'++'","Numero_contacto" : {"Fijo" : "'++'","Movil" : "'++'"},"Direccion" : "'++'","CARGO" : '+TRABAJO+'}';
-
-
+  
   var envio={
-        post: dato,
-        post: dato,
-        post: dato
+        sp: informacionpersonal
       };
-
 
     $.ajax({
     data: envio,
-    url: 'url',
-    type: 'post',
-      beforeSend: function(){
-
-      },
-    
-      success: function(){
+    url: '../../procesos/validacion/validacion_registro.php',
+    type: 'post',   
+      success: function(respuesta){
+        console.log(respuesta);
         alert('Excelente Gracias por completar el registro, su datos seran analizados, mientras podrá ingresar al sistema con su usuario y contraseña, se le informara atravez de su cuenta del sistema su estado de actividad, en cuanto sea habilitado podra usar libremente de las herramientas que les brinda el sistema según su cargo en la institución posterior a la confirmación. Si existe alguna queja o duda informelo a al departamento de Dirección.'); window.location="../../";
       }
 
   });
-
-*/
-
 
 }); 
                   

@@ -28,7 +28,7 @@ $pdf->Cell(0, 6,'Llave Hash',1,1,'C',1);
 $pdf->Cell(0, 6,$_GET['key'],1,1,'C');
 $pdf->Cell(95, 6,'Pregunta Secreta',1,0,'C',1);
 $pdf->Cell(95, 6,'Respuesta Secreta',1,1,'C',1);
-$pdf->Cell(95, 6,$_GET['ps'],1,0,'C');
+$pdf->Cell(95, 6,utf8_decode($_GET['ps']),1,0,'C');
 $pdf->Cell(95, 6,$_GET['rs'],1,1,'C');
 $pdf->Cell(0, 6,'',1,1,'C',1);
 
