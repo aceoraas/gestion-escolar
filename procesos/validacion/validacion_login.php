@@ -15,6 +15,7 @@ if (isset($_POST['u'])&&isset($_POST['p'])) {
     if ($bar['respuesta']==1) {
     sesionlogin($bar[0]['C_U']);
      $json=array('id_u'=>$bar[0]['C_U'],'estado'=>$bar[0]['estado'],'rs'=>$bar['respuesta'],'usuario'=>$_POST['u']);
+     sesionlogin($bar[0]['C_U']);
       echo json_encode($json);
     }else{
       echo json_encode(['rs'=>false]);

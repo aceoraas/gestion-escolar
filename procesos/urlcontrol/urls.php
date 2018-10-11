@@ -1,30 +1,46 @@
 <?php
-
-	switch ('tipo') {
+if (isset($_POST['tipo'])) {
+	if(!empty($_POST['tipo'])){
+		$data[0]=$_POST['tipo'];
+		if ($_POST['tipo']=='otro') {
+			if (isset($_POST['otro'])) {
+				if (!empty($_POST['otro'])) {
+					$data[1]=$_POST['otro'];
+							echo geturl($data);
+				}
+			}
+		}
 		
-		case '1':
-			#code...
+		echo geturl($data);
+	}
+}
+
+ function geturl($tipo=[])
+ {
+ 	switch ($tipo[0]) {
+		
+		case 'Docente':
+			return "../portales/docente/";
+		break;
+
+		case 'Administrativo':
+			return "../portales/administracion/";
+		break;
+
+		case 'Secretaria':
 			
-		break;
-
-		case '2':
-			#code
-		break;
-
-		case '3':
-			
-			# code...
+			return "../portales/secretaria/";
 
 		break;
 
-		case '4':
-			switch ('area') {
+		case 'otro':
+			switch ($tipo[1]) {
 				case '1':
-					# code...
+					return 'opcion1';
 					break;
 				
 				case '2':
-					# code...
+					return "opcion2";
 				break;
 				
 				default:
@@ -33,15 +49,24 @@
 			}
 		break;
 
-		case '5':
-			# code...
+		case 'Salud':
+			return "../portales/salud/";
 		break;
-		case '6':
-		# code...
-		break;
+		case 'cocinero':
+		 	return "../portales/cocina/";
+		 break;
+
+		 case 'Directivo':
+		 	return "../portales/direcion/";
+		 	break;
+		 case 'Lopna':
+		 	return "../portales/lopna/";
+		 	break;
 	
 	default:
 		# code...
 		break;
 }
+ }
+	
 ?>

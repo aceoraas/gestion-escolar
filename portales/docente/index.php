@@ -5,10 +5,10 @@
 	<title>Asistencia</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link type="text/css" rel="stylesheet" href="./css/materialize.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="../css/materialize.css"  media="screen,projection"/>
 
-    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="./js/materialize.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../js/materialize.min.js"></script>
  	<style >
 		body{
 			overflow:scroll;
@@ -20,29 +20,9 @@
 <body onload="activateCamera()">
 <!--NAVegador-->
 <!-- Estructura del menu Down -->
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!">Buscardor</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">Asistencia</a></li>
-  <li><a href="Resumen">Resumen</a></li>
-</ul>
-<div class="navbar-fixed">
-<nav>
-  <div class="nav-wrapper teal lighten-2 z-depth-3">
-  	<a style="margin-left: 20px" href="#!">USER-DATE</a>
-  	<a style="margin-left: 20px" href="#"><?php $fecha=date('d/m/Y'); echo $fecha;?></a>
-    <a href="#!" class="brand-logo center">U.B.A.C.B</a>
-    <ul class="right hide-on-med-and-down">
-    <!-- Dropdown Trigger -->
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
-    
-      <li><a href="#">Chat</a></li>
-      <li><a href="../procesos/salida.php">Salir</a></li>
-    </ul>
-  </div>
-</nav>
-</div>
-<!--fin del navegador-->
+<?php
+ include 'nav.php';
+?>
 
     <br><br>
 
@@ -65,7 +45,7 @@
           <center>
           	<div class="card-content" style="margin-top: -4%; margin-left: 10%; margin-right: 10%;">
           		<div class="card-image">
-              <img class="z-depth-3 " width="150px" height="150px" src="../../assets/img/alumnos/pes.jpg">
+              <img class="z-depth-3 " width="150px" height="150px" src=".../.../assets/img/alumnos/pes.jpg">
             </div>
             <div class="card-content">
              <center>
@@ -125,17 +105,7 @@
 </center>
 </body>
 <script>
-  $(document).ready(function(){   
-    $('.dropdown-button').dropdown({
-  inDuration: 300,
-  outDuration: 225,
-  constrain_width: false, // Does not change width of dropdown to that of the activator
-  hover: true, // Activate on hover
-  gutter: 0, // Spacing from edge
-  belowOrigin: true// Displays dropdown below the button
-   // Displays dropdown with edge aligned to the left of button
-});
-  });
+
 
 	function activateCamera() {
   var canvas = document.querySelector('canvas');
@@ -156,7 +126,7 @@
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     var c = document.getElementById('canvas');
     var img = canvas.toDataURL('image/jpg',0.5);
-    $.post("../procesos/qrtool/test.php",
+    $.post("../../procesos/qrtool/test.php",
       {qr:img},
       function(data){
         $("#rs").html(data);
@@ -164,7 +134,7 @@
     );
 
   }
-    setInterval(captura,5000);
+  //  setInterval(captura,500);
 };
   
  

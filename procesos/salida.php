@@ -1,5 +1,6 @@
 <?php
 session_start();
+salir();
 
 function salir()
 {
@@ -7,7 +8,7 @@ function salir()
 	unset($_SESSION['sesiones']);
 	unset($_SESSION['EXPIRACION']);
 	session_destroy();
-	header('Location: ../../');
+	header('Location: ../');
 }
 
 

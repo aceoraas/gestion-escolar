@@ -69,8 +69,24 @@ function getdatauser(id_u) {
 }
 
 function geturl(CARGO) {
-  console.log(CARGO.TIPO);
-  console.log(CARGO.AREA);
+  var mensaje={
+    tipo: CARGO.TIPO,
+    otro: CARGO.AREA
+  };
+
+  $.ajax({
+    url: '../procesos/urlcontrol/urls.php',
+    type: 'post',
+    data: mensaje,
+    beforeSend: function() {
+      document.body.innerHTML='<center><br><br><br><h1>Obteniendo Direccion<br> por favor espere...</h1><div class="progress"><div class="indeterminate"></div></div><center>';
+    },
+    success: function(data){
+      console.log(data);
+      document.body.innerHTML='<center><br><br><br><h1>listo</h1><div class="progress"><div class="indeterminate"></div></div><center>';
+      window.location=data;
+    }
+  });
 }
 
 
