@@ -42,8 +42,7 @@ class Upload_dp_db{
 		{
 				return false;
 		}
-
-		$save_dp= $this->db->insertOne([$dato]);
+		$save_dp= $this->db->insertOne($dato);
 		$save_dp->getInsertedId();
 		if (isset($save_dp)) {
 			if (!empty($save_dp)) {
@@ -59,6 +58,5 @@ class Upload_dp_db{
 
 	}
 }
-
 
 ?>

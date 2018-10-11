@@ -32,12 +32,12 @@
     <div style="width: 70%;" class="row">
     <div class="input-field col s12">
         <i class="material-icons prefix">account_circle</i>
-        <input type="text" name="user" placeholder="Usuario">
+        <input type="text" id="user" placeholder="Usuario">
     </div>
     
     <div class="input-field col s12">
     <i class="material-icons prefix">dialpad</i>
-    <input type="password" name="pass" placeholder="Contraseña">
+    <input type="password" id="pass" placeholder="Contraseña">
     </div>
 
     <!--botones de login-->
@@ -45,10 +45,10 @@
     <br>
     <div class="row">
     <div class="col s12 l5" >
-    <input type="submit" id="btnentrar" value="Entrar"  class="btn red">
+    <a type="submit" id="btnentrar"class="waves-effect waves-light btn red">Entrar</a>
     </div>
     <div class="col s12 l7" >
-    <a class="btn grey" href="recuperar">Olvide mi usuario o contraseña</a>
+    <a class="waves-effect waves-light btn grey" href="recuperar">Olvide mi usuario o contraseña</a>
     </div>
     </div>
     </form>
@@ -57,7 +57,7 @@
 
     <!--Cartelera informativa-->	
 
-     <div class=" row">
+     <div class="row">
       <div >
       <center>
         <div class="card-content">
@@ -78,11 +78,11 @@
     <div class="row">
     
     <div class="col s12 l6" >  
-    <a class="btn" href="registro/index.php">Nueva Cuenta</a>
+    <a class="waves-effect waves-light btn" href="registro/index.php">Nueva Cuenta</a>
     </div>
     
     <div class="col s12 l6" >
-    <a class="btn" href="##">Asistencia Trabajadores</a>
+    <a class="waves-effect waves-light btn" href="##">Asistencia Trabajadores</a>
     </div>
 
     </center>

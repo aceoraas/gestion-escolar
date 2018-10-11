@@ -259,6 +259,7 @@ function vcedula($a,$b)
 function Crear_cuenta($datos)
 {
 $pwd=password_hash($datos['pwd'],PASSWORD_BCRYPT,['cost' => 12]);
+$pwd=str_replace("$2y$12$",'', $pwd);
 $datos['pwd']=$pwd;
 $subir = new Upload_Usuarios_DB();
 $nuevacuenta=$subir->insertauser($datos);

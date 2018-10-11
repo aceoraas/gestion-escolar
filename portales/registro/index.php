@@ -85,7 +85,9 @@
     <!--Boton siguiente primera parte del registro-->
      <div id='divsiguiente' class='input-field'>
      <input value='2' type='text' style='display:none;'>
-     <a id='btnpaso1' class='waves-effect waves-light btn'>siguiente</a>        
+     <a class="waves-effect waves-light btn red" href="../../">Salir</a>
+     <a id='btnpaso1' class='waves-effect waves-light btn'>siguiente</a>
+
      </div>
     
     </form></div>

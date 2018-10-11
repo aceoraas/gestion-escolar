@@ -7,13 +7,15 @@ var uci;
 $('.datepicker').pickadate({
        // Strings and translations
        monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+       weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
        labelMonthSelect: 'Selecionar Mes',
        labelYearSelect: 'Selecionar Año',
        labelMonthNext: 'Mes Siguiente',
        labelMonthPrev: 'Mes Anterior',
        clear: 'Limpiar',
        close: 'Continuar',
-       formatSubmit: 'yyyy-mm-dd',
+
+       format: 'yyyy-mm-dd',
        selectYears: 90,
        selectMonths: true,
        min: -32850,
@@ -21,6 +23,7 @@ $('.datepicker').pickadate({
        closeOnSelect: true, // Close upon selecting a date,
        container: undefined, // ex. 'body' will append picker to body
       });
+
 /*
 Fin de accesorios
 ########################################################################
@@ -404,7 +407,7 @@ if (contra1.length<6){
     },
     function(data){
       if (data=='espera'){
-        alert('su cuenta aun esta en espera de confirmacion por favor espere.');
+        alert('su cuenta aun esta en espera de confirmacion, por favor espere.');
         window.location="../../";
       }
       if (data=='confirmado'){
@@ -416,7 +419,7 @@ if (contra1.length<6){
         window.location="../../";
       }
       if (data=='reposo'){
-        alert('su cuenta esta dado de baja por l tanto anuncie su reincorporacion a la direccion para reactivar su cuenta');
+        alert('su cuenta esta dado de baja por lo tanto anuncie su reincorporacion a la direccion para reactivar su cuenta');
         window.location="../../";
       }
       if (data=='despedido'){
