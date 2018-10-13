@@ -5,7 +5,6 @@
 <li class="divider"></li>
 <li><a href="./" ">Asistencia</a></li>
 <li><a  href="Resumen.php">Resumen</a></li>
-  
 </ul>
 
 
@@ -31,7 +30,7 @@
   
 
   $(document).ready(function(){   
-    $('.dropdown-button').dropdown({
+  $('.dropdown-button').dropdown({
   inDuration: 300,
   outDuration: 225,
   constrain_width: false, // Does not change width of dropdown to that of the activator
@@ -40,7 +39,9 @@
   belowOrigin: true// Displays dropdown below the button
    // Displays dropdown with edge aligned to the left of button
 });
+
   });
+
 $('#btnsalida').on('click',function(){
   sessionStorage.clear();
 });

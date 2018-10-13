@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="shortcut icon" href="">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link type="text/css" rel="stylesheet" href="./css/materialize.css"  media="screen,projection"/>
@@ -46,45 +47,43 @@ include './'.$f.'/nav.php';
                 <!--Usuario-->
                 <div class="input-field col s12">
                 <i class="material-icons prefix">account_circle</i>
-                <input id='usernameform' disabled name="usuario" type="text">
+                <input id='usernameform' disabled  type="text">
                 </div>
+
                 <!--Contraseña-->
                 <div class="input-field col s12 ">
                 <i class="material-icons prefix">vpn_key</i>
-                <input name="contraconfir" type="password" class="validate"data-length="8">
-                <label for="password">Contraseña Actual</label>
+                <input id="passactual" type="password" data-length="8" placeholder="Contraseña Actual">
                 </div>
                 <div class="input-field col s12 l6">
                 <i class="material-icons prefix">dialpad</i>
-                <input name="contrasenia" type="password" class="validate" data-length="8">
-                <label for="contrasenia">Contraseña nueva</label>
+                <input name="contrasenia" type="password" data-length="8" placeholder="Contraseña nueva">
                 </div>
                 <div class="input-field col s12 l6">
                 <i class="material-icons prefix">dialpad</i>
-                <input name="contraconfir" type="password" class="validate"data-length="8">
-                <label for="password">Confirme la contraseña</label>
+                <input name="contraconfir" type="password" data-length="8" placeholder="Confirme la contraseña">
                 </div>
+
                 <!--BOTON CAMBIAR CONTRASEÑA-->
                 <div class="input-field col s12">
-                <input class="btn "type="submit" name="Contraseña" value="Cambiar contraseña">
+                <input class="btn" type="submit" id="btnContrasena" value="Cambiar contraseña">
                 </div>
+
                 <!--datos personales-->
                 <!--Correo-->
                 <div class="input-field col s12">
                 <i class="material-icons prefix">email</i>
-                <input name="correo" type="email" class="validate">
-                <label for="email">Correo</label>
+                <input name="correo" type="email" class="validate" placeholder="Correo">
                 </div>
                <!--Numero de contacto-->
                <div class="input-field col s12 l6">
                <i class="material-icons prefix">phone</i>
-               <input name="tel_fijo" type="tel" class="validate" data-length="11">
-               <label for="Number of Phone">Telefono Fijo</label>
+               <input name="tel_fijo" type="tel" class="validate" data-length="11" placeholder="Telefono Fijo">
                </div>
                <div class="input-field col s12 l6">
                <i class="material-icons prefix">phone_iphone</i>
-               <input name="tel_movil" type="tel" class="validate" data-length="11">
-               <label for="Number of Phone">Telefono Movil</label>
+               <input name="tel_movil" type="tel" class="validate" data-length="11" placeholder="Telefono Movil">
+               
                </div>        		              
         
            <a id='salida2' href="./<?php echo $f; ?>/" class="btn btn">Volver</a>
@@ -122,7 +121,9 @@ include './'.$f.'/nav.php';
 
 //..............Datos de ususarios formulario............
 $('#usernameform').val(objse.usuario);
-
+$('#btnContrasena').on('click',function(){
+  alert('este boton aun no esta habilitado');
+});
 
 
 
