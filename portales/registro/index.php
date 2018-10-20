@@ -4,10 +4,13 @@
   
 
 
-	 <title>REGISTRO</title>
+<title>REGISTRO</title>
+  <link rel="shortcut icon" href="">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link type="text/css" rel="stylesheet" href="../css/materialize.css"  media="screen,projection"/>            
+<link type="text/css" rel="stylesheet" href="../css/materialize.css"  media="screen,projection"/>
+<script  type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../js/materialize.min.js"></script>
 <style>body{overflow:scroll;background-color:#017c77;color:#FFF; }</style>
 </head>
 
@@ -45,43 +48,44 @@
      <i id='icedula' class='material-icons prefix'>account_box</i>
      <input id='cedula'  type='text' data-length='8'>
      <label id='labelcedula'>Cedula</label>                
-     </div><br><br><br><br>
+     </div><br><br>
                 
     <!--Usuario y contraseña-->
      <div id='divusuario' class='input-field col s12 l12'>
      <i id='iusuario' class='material-icons prefix'>account_circle</i>
      <input id='Usuario' type='text' >
      <label id='labelusuario'>Usuario</label>
-     </div><br><br><br><br>
+     </div><br><br>
      
      <div id='divcontra1'class='input-field col s12 l6'>
      <i id='icontra1'class='material-icons prefix'>dialpad</i>
      <input id='contra1' type='password'>
      <label id='labelcontra1'>Contraseña</label>
-     </div><dr>
-     </dr>
+     </div><br><br>
+     
      <div id='divcontra2'class='input-field col s12 l6'>
      <i id='icontra2'class='material-icons prefix'>dialpad</i>
      <input id='contra2' type='password' >
      <label id='labelcontra2'>Confirme la contraseña</label>
-     </div><br>
+     </div><br><br>
            
     <!--Pregunta de seguridad-->
-    <dr>
-        <br>
+    
+        
       <div id='divseguridad1' class='input-field col s12 l6'>
       <i id='iseguridad1'class='material-icons prefix'>security</i>
       <input id='Pregunta' type='text' >
       <label id='labelseguridad1'>Pregunta de seguridad</label>
-      </div>
-      <dr>
-        <br>
+      </div><br><br>
+      
+        
       <div id='divseguridad2' class='input-field col s12 l6'>
       <i id='iseguridad2' class='material-icons prefix'>security</i>
       <input id='pregunta2' type='text'>
       <label id='labelseguridad2'>Respuesta de seguridad</label>
-      </div><br><br><br>
-<div class="divider"></div>
+      </div><br><br>
+
+    <div class="divider"></div>
     <!--Boton siguiente primera parte del registro-->
      <div id='divsiguiente' class='input-field'>
      <input value='2' type='text' style='display:none;'>
@@ -447,8 +451,6 @@ fin del formulario-->
 			
 			
         </body>
-        <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
-              <script type="text/javascript" src="../js/materialize.min.js"></script>
               <script type="text/javascript" src="../js/picker.js"></script>
               <script type="text/javascript" src="../js/registro.js"></script>
               

@@ -736,29 +736,109 @@ function validarNumero(numero,tipo){
   }
 }
 
+function validartexto(parametro){
+
+ var patron = /^[a-zA-Z\s]*$/;
+ if (parametro.search(patron)){
+    return false;
+ }else{
+      return true;
+ }
+}
+function executetext(){
+  var test=[10];
+test[0]=document.getElementById('1nombre').value;
+test[1]=document.getElementById('2nombre').value;
+test[2]=document.getElementById('1apellido').value;
+test[3]=document.getElementById('2apellido').value;
+
+  for (var i = 0; i <=3; i++) {
+     if (i<4) {
+        var rs=validartexto(test[i]);
+        if (rs==false){
+          ERROR((8+i));
+          positivo[(8+i)]=false;
+          alert('no puede ingresar datos numericos');
+          
+          return false;
+        }else{
+          CHECKET((8+i));
+          positivo[(8+i)]=true;
+
+
+        }
+      }
+    
+  }
+
+}
+
+
+
+
+
+$('#1nombre').on('keyup',function(){
+
+     var res=executetext();
+     if (res==false) {
+      $('#1nombre').val('');
+      
+     }
+     
+
+});
+$('#2nombre').on('keyup',function(){
+
+    var res=executetext();
+     if (res==false) {
+      $('#2nombre').val('');
+     }
+
+});
+$('#1apellido').on('keyup',function(){
+
+     var res=executetext();
+     if (res==false) {
+      $('#1apellido').val('');
+     }
+
+});
+$('#2apellido').on('keyup',function(){
+
+     var res=executetext();
+     if (res==false) {
+      $('#2apellido').val('');
+     }
+
+});
+
+
+
 function validarcampos2(){
 
-  var test=[10];
-
-  test[0]=document.getElementById('1nombre').value;
-  test[1]=document.getElementById('2nombre').value;
-  test[2]=document.getElementById('1apellido').value;
-  test[3]=document.getElementById('2apellido').value;
+ var test=[10];
+test[0]=document.getElementById('1nombre').value;
+test[1]=document.getElementById('2nombre').value;
+test[2]=document.getElementById('1apellido').value;
+test[3]=document.getElementById('2apellido').value;
   test[4]=document.getElementById('fecha_naci').value;
   test[5]=document.getElementById('genero').value;
   test[6]=document.getElementById('email').value;
   test[7]=document.getElementById('movil').value;
   test[8]=document.getElementById('fijo').value;
   test[9]=document.getElementById('dirdetalle').value;
-  for (var i =0; i <10; i++) {
-    if (test[i]==''){
+  for (var i =0; i <=9; i++) {
+
+    if (test[i]==''||test[i]==' '||test[i]==undefined||test[i]==null){
       ERROR((8+i));
       positivo[(8+i)]=false;
       
     }
     else{
+      
       CHECKET((8+i));
       positivo[(8+i)]=true;
+
       
     }
   }
@@ -1187,14 +1267,14 @@ $('#movil').on('keyup',function(){
   var key=document.getElementById('movil').value;
   var tamanio=key.length;
   key=(key*10)/10;
-    if (tamanio==4){document.getElementById('movil').value=key+"-";}
+    if (tamanio==4){document.getElementById('movil').value=key}
 });
 
 $('#fijo').on('keyup',function(){
   var key=document.getElementById('fijo').value;
   var tamanio=key.length;
   key=(key*10)/10;
-  if (tamanio==4){document.getElementById('fijo').value=key+"-";}
+  if (tamanio==4){document.getElementById('fijo').value=key}
 });
 
 $('#glaboral').on('change',function(){
@@ -1233,20 +1313,33 @@ $('#btnatras3').on('click',function(){
   vistas('1');
 });
 
-$('#btnpaso3').on('click',function(){
-  validarcampos2();
+function contadorr(){
   var contador=0;
-  for (var i = 0; i <10; i++) {
+  for (var i = 0; i <=9; i++) {
     if (positivo[(8+i)]==true){
         contador=contador+1;
+    }else{
+      contador=contador-1;
     }
   }
+
+  return contador;
+}
+
+function pasev3(contador){
   if (contador<10){
     alert('NO PUEDE DEJAR NINGUN CAMPO VACIO');
-  }
-  if (contador==10){
+    contador=0;
+  }else{
     vistas('3');
   }
+
+}
+
+$('#btnpaso3').on('click',function(){
+  validarcampos2();
+  var a=contadorr();
+  pasev3(a);  
 });
 
 $('#btnatras4').on('click',function(){
@@ -1301,6 +1394,7 @@ $('#btnRegistrar').on('click',function(){
   if (obj.CARGO.MATERIA==undefined) {obj.CARGO.MATERIA=" ";}
   if (obj.CARGO.GRADO==undefined) {obj.CARGO.GRADO=" ";}
   if (obj.CARGO.SECCION==undefined) {obj.CARGO.SECCION=" ";}
+  
   
   escribe=document.getElementById('mta').innerHTML="<h6>"+obj.CARGO.AREA+' '+obj.CARGO.MATERIA+' '+obj.CARGO.GRADO+' '+obj.CARGO.SECCION+"</h6>";
   escribe=document.getElementById('mg').innerHTML="<h6>"+obj.Sexo+"</h6>";

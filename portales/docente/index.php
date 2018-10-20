@@ -40,12 +40,6 @@
       <div class="col s12 l5 card-image white lighten-4" style="padding-top:2em; padding-bottom: 2em; border-radius: 5px">
       
       <div id="reader" class="video z-depth-5" style="border-radius: 1em; width: 320px; height: 240px;"></div>
-      
-      <!--
-        <video style="border-radius: 5px;" class="z-depth-5" autoplay="true" width="320" id="camaraOn" height="240"> </video>
-        
-        <canvas  style="display: none;" width="320" id="canvas" height="240"></canvas>
-        -->
         <div class="card-action" style="padding-top: 1em">
           <a href="Resumen.php" class="z-depth-3 btn">Finalizar</a>
         </div>
@@ -96,17 +90,25 @@
     </div>
 </body>
 <script type="text/javascript" src="../js/qr/html5-qrcode.min.js"></script>
+
 <script>
+
+
 $(document).ready(function(){
 
   $('#reader').html5_qrcode(function(data){ 
+  
   $('#qrasistencia').html(data);
+    //window.location=data;
+   setTimeout(400);
+
   },
   function(error){
   },function (videoError){
     alert('Disculpe habilite la camara');
   });
   });
+
 function cargarmisalumnos(){
 
 }
@@ -123,30 +125,9 @@ function alumnosasistido(codigo){
 }
 
 
-/*
-//-------------------------Activacion de la camara --------------------------
-var canvas = document.querySelector('canvas');
-  var context = canvas.getContext('2d');
-  var video = document.querySelector("#camaraOn");
-	function activateCamera() {
-  
-	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMEdia;
-    if (navigator.getUserMedia) {
-        navigator.getUserMedia({video: true}, handleVideo, videoError);
-    }
-    function handleVideo(stream) {
-        video.src = window.URL.createObjectURL(stream);
-    }
-    function videoError(e) {
-        alert("La camara No esta funcionando, por favor Permita el acceso")
-    }
-
-};*/
-
- 
-
- 
 
 </script>
-
+<?php
+include "../footer.php";
+?>
 </html>
