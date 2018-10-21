@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             <link type="text/css" rel="stylesheet" href="../../portales/css/materialize.css"  media="screen,projection"/>
-	<title>Encuesta</title>
-	<style >
+    <title>Encuesta</title>
+    <style >
                 body{
                     overflow:scroll;
                     background-color: #017c77;
@@ -69,7 +69,7 @@
 <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
  <script type="text/javascript" src="../js/materialize.min.js"></script>
  <script type="text/javascript">
-    
+
     function ejecutar(){
     $.get("../../db/encuesta_db.php?COUNT=1",function(data){
         $("#resultado").text(data);
@@ -84,7 +84,7 @@
       //  $("#resultado4").text(data[0]);
     //});
     }
-    
+
     setInterval( ejecutar, 500 );
 
  </script>

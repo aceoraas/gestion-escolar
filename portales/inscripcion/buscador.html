@@ -1,0 +1,33 @@
+<div class="col s12 l12 center">
+    <h4>
+        Buscar Cedula Representante
+    </h4>
+</div>
+<br/>
+<br/>
+<div class="col s12 l12">
+    <div class="nav-wrapper grey lighten-2" style="height: 45px; border-radius: 1em;">
+        <div class="input-field">
+            <input id="search" style="height: 45px; border-radius: 1em;" type="search">
+                <label class="label-icon" for="search">
+                    <i class="material-icons">
+                        search
+                    </i>
+                </label>
+                <i class="material-icons">
+                    close
+                </i>
+            </input>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#search').one('keyup',function () {
+    $('#search').val('V-'+$('#search').val());
+    });
+    $('#search').on('keyup',function () {
+        $('.representante-').load('./representante.html');
+
+
+    });
+</script>

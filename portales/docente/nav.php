@@ -13,9 +13,10 @@
 <nav>
   <div class="nav-wrapper teal lighten-2 z-depth-3">
 
-  	<a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+  	<a href="#" style="padding: 0;" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     
     <a href="#!" class="brand-logo center center-align ">
+
       <img class="responsive-img hide-on-small-only" src="../../assets/img/imgs/ESCUDO.SVG" style="width: 9%; padding-top: 4px;"><h5 class="hide-on-med-and-up">Angel Celestino Bello</h5></a>
     
   <a id='nameuser' class="hide-on-small-only" style="margin-left: 2em;" href="../perfil.php"></a>

@@ -1,0 +1,78 @@
+<div class="col s12 l12">
+    <div class="buscando">
+        <h2>
+            Buscando
+        </h2>
+        <div class="progress" style="margin-top: 4em;">
+            <div class="indeterminate">
+            </div>
+        </div>
+    </div>
+    <div class="card black-text center" style="border-radius: 1em; margin-top: 4em;">
+        <div class="encontrado col s12 l5">
+            <div class="center" id="escribir">
+            </div>
+        </div>
+        <div class="col s12 l7">
+            <div class="alumnos-res">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var indice=0;
+        var data = $('#search').val();
+        function buscando(bases,datas) {
+            var a;
+
+            for (var i in bases) {
+            if(bases[i]['Cedula']===datas){
+                indice=bases[i];
+                return true;
+            }else{
+                a=false;
+            }
+        }
+        return a;
+        }
+        var inteval=0;
+        var respuesta=buscando(representantes,data);
+        
+        if (respuesta==true) {
+        
+            clearInterval(inteval);
+            $('.buscando').hide();
+            
+            
+            $('.encontrado').html('<div style="border-radius: 1em; margin-top: 4em;" class="card-content white left-align"><div class="center"><img class="circle responsive-img z-depth-4" width="100" height="100" src="../../assets/img/'+indice.UrlImagen+'"></div><br><div class="divider"></div><br><h6><b>Nombre:</b> '+indice.PNombre+' '+indice.SNombre+'</h6><h6><b>Apellido:</b> '+indice.PApellido+' '+indice.SApellido+'</h6><h6><b>Cedula:</b> '+indice.Cedula+'</h6><h6><b>Sexo:</b> '+indice.Sexo+'</h6><h6><b>Edad:</b> '+calcularEdad(indice.Fecha_Nacimiento)+'</h6><h6><b>Fecha de Nacimiento:</b> '+indice.Fecha_Nacimiento+'</h6><br><div class="divider"></div><br><h6><b>Correo:</b> '+indice.Correo+'</h6><h6><b>Direccion:</b> '+indice.Direccion.Detalle+'</h6><br><div class="divider"></div><br><h6><b>Numero de contacto:</b><br><br><pre style="display:inline">&#09;</pre><b>Fijo:</b> '+indice.Numero_contacto.Fijo+'<br><pre style="display:inline">&#09;</pre><b>Movil:</b> '+indice.Numero_contacto.Movil+'<br><pre style="display:inline">&#09;</pre><b>Familiar:</b> '+indice.Numero_contacto.Familiar+'<br></h6><br><div class="divider"></div><br><h6><b>Trabajo:</b><br><pre style="display:inline">&#09;</pre><b>Area:</b> '+indice.Profesiones.Profesion+'<br><pre style="display:inline">&#09;</pre><b>Cargo:</b> '+indice.Profesiones.Area+'</h6><br><div class="divider"></div><br><div class="center"><a class="btn" id="Actualizar">Actualizar datos</a></div></div>');
+            for (var i = 0; i <=alumnos.length; i++) {
+                if(alumnos[i].C_E==indice.Inscriptos[i].C_E){
+
+                    $('.alumnos-res').html($('.alumnos-res').html()+'<div class="card-content center white left-align col s12 l5" style="border-radius: 1em; margin-top: 4em; margin-left: 2em;"><img class="circle responsive-img z-depth-4" height="100" src="../../assets/img/'+alumnos[i].UrlImagen+'" width="100"></img><h5><b>'+alumnos[i].PNombre+' '+alumnos[i].SNombre+'</b></h5><h5><b>'+alumnos[i].Grado+' '+alumnos[i].Seccion+'</b></h5><a id="btn-inscribir" href="./formulario.html" class="btn red">Inscribir</a></div>');
+                }
+            }
+                
+        }
+        else{
+            inteval=setInterval(function(){
+            $('#escribir').html('<br><h5>Este Representante no esta en la base de datos</h5><br><a class="btn red " id="btn-new" href="./formulario.html" style="margin-top: 1em;">Nueva matricula</a>');
+            $('.buscando').hide();
+            },5000);
+            
+        }
+    function calcularEdad(fecha) {
+    var hoy = new Date();
+    var cumpleanos = new Date(fecha);
+    var edad = hoy.getFullYear() - cumpleanos.getFullYear();
+    var m = hoy.getMonth() - cumpleanos.getMonth();
+
+    if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+        edad--;
+    }
+
+    return edad;
+}
+
+    });
+</script>

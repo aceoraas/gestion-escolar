@@ -1,72 +1,70 @@
 <?php
 if (isset($_POST['tipo'])) {
-	if(!empty($_POST['tipo'])){
-		$data[0]=$_POST['tipo'];
-		if ($_POST['tipo']=='otro') {
-			if (isset($_POST['otro'])) {
-				if (!empty($_POST['otro'])) {
-					$data[1]=$_POST['otro'];
-							echo geturl($data);
-				}
-			}
-		}
-		
-		echo geturl($data);
-	}
+    if (!empty($_POST['tipo'])) {
+        $data[0] = $_POST['tipo'];
+        if ($_POST['tipo'] == 'otro') {
+            if (isset($_POST['otro'])) {
+                if (!empty($_POST['otro'])) {
+                    $data[1] = $_POST['otro'];
+                    echo geturl($data);
+                }
+            }
+        }
+
+        echo geturl($data);
+    }
 }
 
- function geturl($tipo=[])
- {
- 	switch ($tipo[0]) {
-		
-		case 'Docente':
-			return "../portales/docente/";
-		break;
+function geturl($tipo = [])
+{
+    switch ($tipo[0]) {
 
-		case 'Administrativo':
-			return "../portales/administracion/";
-		break;
+        case 'Docente':
+            return "../portales/docente/";
+            break;
 
-		case 'Secretaria':
-			
-			return "../portales/secretaria/";
+        case 'Administrativo':
+            return "../portales/administracion/";
+            break;
 
-		break;
+        case 'Secretaria':
 
-		case 'otro':
-			switch ($tipo[1]) {
-				case '1':
-					return 'opcion1';
-					break;
-				
-				case '2':
-					return "opcion2";
-				break;
-				
-				default:
-					# code...
-					break;
-			}
-		break;
+            return "../portales/secretaria/";
 
-		case 'Salud':
-			return "../portales/salud/";
-		break;
-		case 'cocinero':
-		 	return "../portales/cocina/";
-		 break;
+            break;
 
-		 case 'Directivo':
-		 	return "../portales/direcion/";
-		 	break;
-		 case 'Lopna':
-		 	return "../portales/lopna/";
-		 	break;
-	
-	default:
-		# code...
-		break;
+        case 'otro':
+            switch ($tipo[1]) {
+                case '1':
+                    return 'opcion1';
+                    break;
+
+                case '2':
+                    return "opcion2";
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
+            break;
+
+        case 'Salud':
+            return "../portales/salud/";
+            break;
+        case 'cocinero':
+            return "../portales/cocina/";
+            break;
+
+        case 'Directivo':
+            return "../portales/direcion/";
+            break;
+        case 'Lopna':
+            return "../portales/lopna/";
+            break;
+
+        default:
+            # code...
+            break;
+    }
 }
- }
-	
-?>
