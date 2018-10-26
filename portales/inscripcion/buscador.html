@@ -14,7 +14,7 @@
                         search
                     </i>
                 </label>
-                <i class="material-icons">
+                <i class="material-icons" id="close">
                     close
                 </i>
             </input>
@@ -29,5 +29,8 @@
         $('.representante-').load('./representante.html');
 
 
+    });
+    $('#close').on('click',function () {
+        $('#search').val('');
     });
 </script>

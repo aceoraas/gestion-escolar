@@ -18,7 +18,7 @@ class alumnoDB
             [
                 'limit'      => 1,
                 'projection' => [
-                    '_id' => 0,
+                    '_id' => 0
                 ],
             ]);
         foreach ($respuesta as $dato => $valor) {
@@ -38,5 +38,24 @@ class alumnoDB
         $e = json_encode($e);
         $e = json_decode($e, true);
         return $e;
+    }
+
+    public function alumnosp($grado,$seccion){
+
+        $respuesta = $this->db->find(
+            [
+                "Grado"=> $grado,
+                "Seccion"=> $seccion
+            ],
+            [
+                'projection' =>[ '_id' =>0],
+        ]);
+        foreach ($respuesta as $dato => $valor) {
+            $e[$dato] = $valor;
+        }
+        $e = json_encode($e);
+        $e = json_decode($e, true);
+        return $e;
+
     }
 }

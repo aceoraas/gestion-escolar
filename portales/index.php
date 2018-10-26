@@ -142,8 +142,11 @@
 </html>
 <script src="js/login.js" type="text/javascript">
 </script>
-<script async="" charset="utf-8" defer="" src="/javascripts/application.js" type="text/javascript">
+<script type="text/javascript" src="../../procesos/validacion/session.js"></script>
+<script type="text/javascript" src="../../procesos/validacion/tokens.js"></script>
+<script async="" charset="utf-8" type="text/javascript">
     $(document).ready(function(){
+        
         $('#Cartelera-titulo').html('Desarrolladores del sistema');
         $('#Cartelera-contenido').html('<b>Ricardo Acero:</b> Desarrollador de codigo, Diseño y Base de Datos.<br><b>Ramon Salazar:</b> Documentacion y medidador de cliente.<br><b>Ricardo Marin:</b> Documentacion, Analista de UX y UI, Backup de codigo.<br> Desarrollado para la obtencion del titulo de TSU, en la Universidad Politecnica Jose Antonio Anzoategui');
 

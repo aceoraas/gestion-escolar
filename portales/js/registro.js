@@ -1,5 +1,6 @@
 /* PARA LA FECHA Y LA HORA*/
 vistas('0');
+
 vlaboral('not');
 var uci;
 $('.datepicker').pickadate({
@@ -229,8 +230,9 @@ function CAMPOCEDULA() {
                         $("#labelcedula").html("Procesando, espere por favor...");
                     },
                     success: function(data) {
-                        obj = JSON.parse(data);
                         console.log(data);
+                        obj = JSON.parse(data);
+                        
                         //verifica el booleano de servidor.
                         if (obj.valor == '1' || obj.valor == '0' || obj.valor == '3') {
                             // mensaje  cedula valida.
@@ -656,7 +658,7 @@ function validarNumero(numero, tipo) {
 }
 
 function validartexto(parametro) {
-    var patron = /^[a-zA-Z\s]*$/;
+    var patron = /^[a-zA-ZÑñ \s]*$/;
     if (parametro.search(patron)) {
         return false;
     } else {
@@ -723,13 +725,21 @@ function validarcampos2() {
     test[8] = document.getElementById('fijo').value;
     test[9] = document.getElementById('dirdetalle').value;
     for (var i = 0; i <= 9; i++) {
+        if (test[i]==1||test[i]==3) {
+                CHECKET((8 + i));
+            positivo[(8 + i)] = true;
+            }else{
         if (test[i] == '' || test[i] == ' ' || test[i] == undefined || test[i] == null) {
             ERROR((8 + i));
-            positivo[(8 + i)] = false;
+            
+                positivo[(8 + i)] = false;
+            
+            
         } else {
             CHECKET((8 + i));
             positivo[(8 + i)] = true;
         }
+    }
     }
 }
 var jsonwork = "none";
@@ -1142,7 +1152,8 @@ function contadorr() {
 }
 
 function pasev3(contador) {
-    if (contador < 10) {
+    console.log(contador);
+    if (contador < 6) {
         alert('NO PUEDE DEJAR NINGUN CAMPO VACIO');
         contador = 0;
     } else {
@@ -1219,3 +1230,4 @@ $('#deacuerdo').on('click', function() {
         }
     });
 });
+

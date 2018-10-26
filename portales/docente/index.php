@@ -41,8 +41,10 @@ include 'nav.php';
 
     <div class="black-text" style="width: 90%;">
 
-      <div class="col s12 l5 card-image white lighten-4" style="padding-top:2em; padding-bottom: 2em; border-radius: 5px">
-
+      <div class="col s12 l5 card-image white camara lighten-4" style="padding-top:2em; padding-bottom: 2em; border-radius: 5px">
+        
+        <a class=" led " style="width: 10px; height: 10px;"></a>
+        
       <div id="reader" class="video z-depth-5" style="border-radius: 1em; width: 320px; height: 240px;"></div>
         <div class="card-action" style="padding-top: 1em">
 
@@ -50,7 +52,7 @@ include 'nav.php';
           <a id="btn-enviarcod" class="btn " title="enviar">Enviar</a>
           <a id="btn-cerrar" class="z-depth-3 btn" title="enviar">Cerrar</a>
           <input type="text" id="codalumno" placeholder="Ingrese el codigo">
-          <a href="Resumen.php" title="Finalizar asistencia" class="z-depth-3 btn">Finalizar</a>
+          <a href="Resumen.php" title="Finalizar asistencia" class="z-depth-3 btn cerrarcamara">Finalizar y enviar</a>
         </div>
       </div>
 
@@ -73,7 +75,7 @@ include 'nav.php';
       <div class="col s12 l4" style="margin-top: 1em;">
         <div class="card-content teal z-depth-5" style="padding-top: 1em; padding-bottom: 1em; border-radius: 5px">
             <h4>Asistidos</h4>
-            <h2>0</h2>
+            <div class="asistidos"><h2>0</h2></div>
         </div>
       </div>
 
@@ -81,7 +83,7 @@ include 'nav.php';
         <div class="card-content teal z-depth-5" style="padding-top: 1em; padding-bottom: 1em; border-radius: 5px">
           <span class="white-text">
             <h4>Total</h4>
-            <h2>0</h2>
+            <div class="cantidad"><h2>0</h2></div>
           </span>
         </div>
       </div>
@@ -91,7 +93,7 @@ include 'nav.php';
         <div class="card-content teal z-depth-5" style="padding-top: 1em; padding-bottom: 1em; border-radius: 5px">
           <span class="white-text">
             <h4>Restantes</h4>
-            <h2>0</h2>
+            <div class="restantes"><h2>0</h2></div>
           </span>
         </div>
       </div>
@@ -99,11 +101,17 @@ include 'nav.php';
     </div>
 </body>
 <script type="text/javascript" src="../js/qr/html5-qrcode.min.js"></script>
-
+<script type="text/javascript" src="../../procesos/datos/datos.js"></script>
 <script>
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $(document).ready(function(){
+
+   
+ var my = JSON.parse(localStorage.misdatos);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 $('#codalumno').hide();
 $('#btn-enviarcod').hide();
@@ -121,35 +129,190 @@ $('#btn-cerrar').on('click',function(){
   $('#btn-cerrar').hide();
 });
 
-$('#fotoalumno').html('<i class="material-icons black-text large">account_circle</i><h6>No hay registro</h6>');
-$('#reader').html5_qrcode(function(data){
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$('#qrasistencia').html(data);
-  //window.location=data;
+$('#fotoalumno').html('<i class="material-icons black-text large">account_circle</i><h6>No hay registro</h6>');
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+$('#reader').html5_qrcode(function(data){
+var html = '<div class="preloader-wrapper big active"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>';
+  
+  compararalumno(data);
+
+
+
+  
  setTimeout(400);
- $('#fotoalumno').html('<img class="responsive-img circle z-depth-3 " width="120px" src="../../assets/img/alumnos/pes.jpg">');
 },
+
+
 function(error){
+
+    if (error=='No se pudieron encontrar suficientes patrones de buscador') {
+      $('.led').removeClass('btn-floating pulse left red teal yellow  green orange');
+        $('.led').addClass('btn-floating pulse left red ');
+        
+    }
+    if (error=='No se pudieron encontrar suficientes patrones de alineación.') {
+      $('.led').removeClass('btn-floating pulse left red teal green yellow orange');
+      $('.led').addClass('btn-floating pulse left teal');
+    }
+    if (error=='El grado del localizador de errores no coincide con el número de raíces') {
+      $('.led').removeClass('btn-floating pulse left red teal yellow green orange');
+      $('.led').addClass('btn-floating pulse left yellow');
+    }
+
+    if (error=='error') {
+       $('.led').removeClass('btn-floating pulse left red teal yellow green orange');
+      $('.led').addClass('btn-floating pulse left orange');
+
+    }
+
+  console.log(error);
 },function (videoError){
   alert('La camara no se encuentra disponible, por favor habilitela o cambie de navegador, en caso de no funcionar revise los drivers de su camara, o cambien de dispositivo');
 });
-});
 
-function cargarmisalumnos(){
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}
+var s=[];
+var n=[];
+ 
+    
+  var total=getmyalumnosp(my.CARGO.AREA , my.CARGO.GRADO , my.CARGO.SECCION);
+  if (total.cantidad>0){
+$('.cantidad').html('<h2>'+(total.cantidad)+'</h2>');
+  }else{
+    $('.cantidad').html(html);
+  }
+  
+
+  for (var i = 0; i < alumnos.length; i++){
+    if (sessionStorage.listnegativo==null) {
+      n[i]=alumnos[i].C_E;
+      
+    }else{
+      n = JSON.parse(sessionStorage.listnegativo);
+
+      asistidos();
+    }
+    
+  }
+  
+    $('.restantes').html('<h2>'+n.length+'</h2>');
+    
+  
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 function compararalumno(codigo){
 
-}
-//var ai;
-function alumnosnoasistido(codigo){
-//localStorage.noasistidos='"'+localStorage.noasistidos+'","'+ai'":"'+codigo+'"';
- // ai++;
+  for (var i = 0; i < alumnos.length; i++){
+
+    if (sessionStorage.listnegativo==null) {
+      n[i]=alumnos[i].C_E;
+
+      
+    }else{
+      n = JSON.parse(sessionStorage.listnegativo);
+    }
+    
+
+   if(alumnos[i].C_E===codigo){
+    s[i]=alumnos[i].C_E;
+     
+      
+     $('.led').removeClass('btn-floating pulse left red teal yellow orange green');
+      $('.led').addClass('btn-floating pulse left green');
+    $('.asistidos').html('<h2>'+s.length+'</h2>');
+    $('#fotoalumno').html('<img class="circle z-depth-3 resposive-img" width="100" src="../../assets/img/'+alumnos[0].UrlImagen+'">');
+    $('#qrasistencia').html('<h4>'+alumnos[i].PNombre+' '+alumnos[i].PApellido+'</h4><h6><b>Cedula Estudiantil:</b> '+alumnos[i].C_E+'</h6><h5><b>Genero:</b> '+sexo(alumnos[i].Sexo)+'<br><blockquote><b>Edad:</b>'+calcularEdad(alumnos[i].Fecha_Nacimiento)+'</blockquote></h5>');
+    alumnosnoasistido(codigo);
+      sessionStorage.removeItem('listpositivo');
+      savedsessionStorage('listpositivo', s);
+    
+  } 
+      sessionStorage.removeItem('listnegativo');
+      savedsessionStorage('listnegativo', n);
+    
+  }
+
+
+      
+
+
+  function calcularEdad(fecha) {
+    var hoy = new Date();
+    var cumpleanos = new Date(fecha);
+    var edad = hoy.getFullYear() - cumpleanos.getFullYear();
+    var m = hoy.getMonth() - cumpleanos.getMonth();
+
+    if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+        edad--;
+    }
+
+    return edad;
 }
 
-function alumnosasistido(codigo){
-  //localStorage.asistidos=codigo;
+  function sexo(a){
+    if(a=='F'){
+      return 'Femenina';
+    }
+    else{
+      return 'Masculino';
+    }
+  }
+
 }
+
+function asistidos(){
+  
+   var listpositivo = sessionStorage.getItem('listpositivo');
+
+    if (listpositivo == null) {
+        s = [];
+    } else {
+        s = [];
+       s = JSON.parse(listpositivo);
+    }
+    
+  $('.asistidos').html('<h2>'+s.length+'</h2>');
+ 
+}
+
+
+function alumnosnoasistido(codigo){
+  for(var i=0; i < n.length;i++){
+
+    if(n[i]===codigo){
+      
+      n.splice(i, 1);
+      sessionStorage.removeItem('listnegativo');
+      savedsessionStorage('listnegativo', n);
+    }
+  }
+   var listnegativo = sessionStorage.listnegativo;
+    if (listnegativo == null) {
+        n = [];
+    } else {
+        n = [];
+       n = JSON.parse(listnegativo);
+    }
+  $('.restantes').html('<h2>'+n.length+'</h2>');
+  
+}
+
+
+
+   
+
+});
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 </script>

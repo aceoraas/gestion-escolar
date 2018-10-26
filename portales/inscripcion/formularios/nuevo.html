@@ -1,0 +1,200 @@
+<style type="text/css">
+/* label color */
+.input-field label {
+    color: #000;
+}
+
+/* valid color */
+.input-field input[type=text].valid {
+    border-bottom: 1px solid #017c77;
+    box-shadow: 0 1px 0 0 #017c77;
+}
+
+/* valid color */
+.input-field input[type=password].valid {
+    border-bottom: 1px solid #017c77;
+    box-shadow: 0 1px 0 0 #017c77;
+}
+
+/* label focus color */
+.input-field input[type=text]:focus+label {
+    color: #017c77;
+}
+
+/* icon prefix focus color */
+.input-field .prefix.active {
+    color: #017c77;
+}
+</style>
+<div class="s12 l12 center">
+	<h2>Datos del Representante</h2>
+</div>
+<div class="col s12 l12 black-text Representante card" style="margin-top: 3em;">
+    <div class="card-content ">
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12 l6">
+                        <input class="validate" id="first_name" placeholder="Ingrese los nombres completo" type="text">
+                        <label for="first_name">
+                            Nombres
+                        </label>
+                    </div>
+                    <div class="input-field col s12 l6">
+                        <input class="validate" id="last_name" placeholder="Ingrese los apellidos completos" type="text">
+                        <label for="last_name">
+                            Apellidos
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6 l4">
+                        <select>
+                            <option disabled="" selected="" value="">Selecione una nacionalidad
+                            </option>
+                            <option value="V">Venezolano
+                            </option>
+                            <option value="E">Extranjero
+                            </option>
+                        </select>
+                        <label>
+                            Nacionalidad
+                        </label>
+                    </div>
+                    <div class="input-field col s6 l8">
+                        <input class="validate" id="disabled" placeholder="Ingrese el numero de Cedula" type="text">
+                        <label for="disabled">
+                            Cedula
+                        </label>
+                    </div>
+                    <div class="input-field col s6 l4">
+                        <select>
+                            <option disabled="" selected="" value="">Selecione su Genero
+                            </option>
+                            <option value="M">Masculino
+                            </option>
+                            <option value="F">Femenino
+                            </option>
+                        </select>
+                        <label>genero
+                        </label>
+                    </div>
+                    <div class="input-field col s6 l8">
+                        <input type="text" class="datepicker">
+                        <label>Fecha de Nacimiento
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input class="validate" id="email" type="email">
+                        <label for="email">
+                            Correo
+                        </label>
+                    </div>
+                </div>
+            </form>
+            <div class="row center">
+            <div class="col s12 l12">
+            <a href="#" disabledex class="btn">atras</a>
+            <a href="#" class="btn">Continuar</a>	
+            </div>
+             </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+</div>
+<!--
+<div class="col s12 l12 alumno">
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input class="validate" id="first_name" placeholder="Placeholder" type="text">
+                        <label for="first_name">
+                            Nombres
+                        </label>
+                    
+                </div>
+                <div class="input-field col s6">
+                    <input class="validate" id="last_name" type="text">
+                        <label for="last_name">
+                            Apellidos
+                        </label>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input class="validate" disabled="" id="disabled" type="text" value="I am not editable">
+                        <label for="disabled">
+                            Disabled
+                        </label>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input class="validate" id="password" type="password">
+                        <label for="password">
+                            Password
+                        </label>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input class="validate" id="email" type="email">
+                        <label for="email">
+                            Email
+                        </label>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    This is an inline input field:
+                    <div class="input-field inline">
+                        <input class="validate" id="email" type="email">
+                            <label data-error="wrong" data-success="right" for="email">
+                                Email
+                            </label>
+                        
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>-->
+
+
+<a href="./" class="btn red"><i class="material-icons prefix left">exit_to_app</i>Salir</a>
+
+
+<script type="text/javascript" src="../../js/picker.date.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('select').material_select();
+    $('.datepicker').pickadate({
+        // Strings and translations
+        monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+        labelMonthSelect: 'Selecionar Mes',
+        labelYearSelect: 'Selecionar Año',
+        labelMonthNext: 'Mes Siguiente',
+        labelMonthPrev: 'Mes Anterior',
+        clear: 'Limpiar',
+        close: 'Continuar',
+        format: 'yyyy-mm-dd',
+        selectYears: 90,
+        selectMonths: true,
+        min: -32850,
+        max: -6570,
+        closeOnSelect: true, // Close upon selecting a date,
+        container: undefined, // ex. 'body' will append picker to body
+    });
+});
+</script>

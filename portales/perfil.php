@@ -34,7 +34,7 @@ $f=base64_decode($_GET['n']);
       
       <div class="col s12 l4 card-content"  style="height: 90%;background-color: white; padding-bottom: 1.5em; padding-top: 1em; border-radius: 5px;">
 
-      <img class="circle responsive-img z-depth-4" width="128" height="128" src="../assets/img/alumnos/pes.jpg">
+      
       <div class="card-content">
           <div id='dataus' style="margin-top: 3%;"></div>
       </div>
@@ -96,7 +96,10 @@ $f=base64_decode($_GET['n']);
   </center>
 </body>
 
+
 <script type="text/javascript">
+
+  
   //.... variables.......................
   var obj= JSON.parse(localStorage.misdatos);
   var objse= JSON.parse(sessionStorage.misdatosusuario);
@@ -104,7 +107,7 @@ $f=base64_decode($_GET['n']);
   
 
 //................datos de usuario lateral izquierdo........
-  $('#dataus').html('<p></h6><br><h6><b>Cedula: '+objse.id_u+'</b></h6><br><h6><b>Nombre: '+obj.PNombre+' '+obj.SNombre+'</b></h6><br><h6><b>Apellido: '+obj.PApellido+' '+obj.SApellido+'</b></h6><br><h6><b>Fecha_Nacimiento: '+obj.Fecha_Nacimiento+'</b></h6><br><h6><b>Sexo: '+obj.Sexo+'</b></h6><br><h6><b>Edad: '+calcularEdad(obj.Fecha_Nacimiento)+' años </b></h6><br><h6><b>Area Laboral: '+obj.CARGO.TIPO+' '+obj.CARGO.AREA+'</b></h6></p>');
+  $('#dataus').html('<img class="circle responsive-img z-depth-4" width="128" height="128" src="../assets/img/'+obj.UrlImagen+'"><p></h6><br><h6><b>Cedula: '+objse.id_u+'</b></h6><br><h6><b>Nombre: '+obj.PNombre+' '+obj.SNombre+'</b></h6><br><h6><b>Apellido: '+obj.PApellido+' '+obj.SApellido+'</b></h6><br><h6><b>Fecha_Nacimiento: '+obj.Fecha_Nacimiento+'</b></h6><br><h6><b>Sexo: '+obj.Sexo+'</b></h6><br><h6><b>Edad: '+calcularEdad(obj.Fecha_Nacimiento)+' años </b></h6><br><h6><b>Area Laboral: '+obj.CARGO.TIPO+' '+obj.CARGO.AREA+'</b></h6></p>');
 
   function calcularEdad(fecha) {
     var hoy = new Date();
@@ -119,7 +122,7 @@ $f=base64_decode($_GET['n']);
     return edad;
 }
 
-
+exite('log');
 //..............Datos de ususarios formulario............
 $('#usernameform').val(objse.usuario);
 $('#btnContrasena').on('click',function(){
@@ -145,7 +148,7 @@ $('#btnContrasena').on('click',function(){
    }
   
   $('#salida2').on('click',function() {
-    sessionStorage.laodperfil='1';
+    
   });
 </script>
 </html>

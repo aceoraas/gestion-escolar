@@ -4,6 +4,7 @@
 
 <li><a href="./" >Asistencia<i class="material-icons left">grain</i></a></li>
 <li><a  href="Resumen.php">Resumen<i class="material-icons left">content_paste</i></a></li>
+<li class="inscripcion-active"><a href="../inscripcion/"><i class="material-icons left">assignment_ind</i>Inscripcion</a></li>
 </ul>
 
 
@@ -49,6 +50,7 @@
       <li class="divider"></li>
       <li><a href="./" ">Asistencia<i class="material-icons left">grain</i></a></li>
       <li><a  href="Resumen.php">Resumen<i class="material-icons left">content_paste</i></a></li>
+      <li class="inscripcion-active"><a href="../inscripcion/"><i class="material-icons left">assignment_ind</i>Inscripcion</a></li>
       <li><a  href="#">Chat<i class="material-icons left">chat</i></a></li>
       <li><a id="btnsalida" href="../../procesos/salida.php">Salir<i class="material-icons left">exit_to_app</i></a></li>
       </ul>
@@ -61,6 +63,27 @@
 
   $(document).ready(function(){   
 
+    function ins(){
+      $.get("../../procesos/urlcontrol/sistemacontrol.php", function(a){
+        var a= JSON.parse(a);
+        
+          if (a.inscripcion!=0||a.inscripcion!='0') {
+        $('.inscripcion-active').show();
+      }else{
+        $('.inscripcion-active').hide();
+      }
+
+      }
+
+      );
+      
+      
+      
+
+    }
+
+setInterval(ins(),1000);
+
      $('.dropdown-button').dropdown({
       alignment:'left',
       constrainWidth: false,
@@ -70,7 +93,7 @@
       });
 
       $(".button-collapse").sideNav({
-      menuWidth: 350, // Default is 300
+      menuWidth: 300, // Default is 300
       edge: 'left', // Choose the horizontal origin
       closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
       draggable: true, // Choose whether you can drag to open on touch screens,
@@ -80,7 +103,9 @@
   });
 
 $('#btnsalida').on('click',function(){
-  sessionStorage.clear();
+  sessionStorage.removeItem('misdatosusuario');
+  sessionStorage.removeItem('firs');
+
 });
 $(document).ready(function(){
   var userdate= JSON.parse(sessionStorage.misdatosusuario);

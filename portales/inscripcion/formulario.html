@@ -1,1 +1,110 @@
-formulariol.html
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>
+         Inscripcion
+      </title>
+      <link href="../../assets/img/imgs/ESCUDO.ico" rel="shortcut icon">
+         <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+         <meta content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
+            <link href="../css/materialize.css" media="screen,projection" rel="stylesheet" type="text/css"/>
+            <script src="../js/jquery-3.1.1.min.js" type="text/javascript">
+            </script>
+            <script src="../js/materialize.min.js" type="text/javascript">
+            </script>
+         </meta>
+      </link>
+      <style>
+         body{
+      overflow:scroll;
+      background-color: #017c77;
+      color: #FFF;
+    }
+      </style>
+   </head>
+   <body>
+      <div class="container">
+         <div class="row">
+            <div class="formulario-">
+            </div>
+         </div>
+      </div>
+   </body>
+   <script src="funcionget.js" type="text/javascript">
+   </script>
+   <script type="text/javascript">
+      if (sessionStorage.form==sessionStorage.firs){
+          
+        	var getnew=getParameterByName('new'); // obtiene la url de la funcionget.js
+        	var palabra= getnew.split('-'); // serparo la palabra con - si encuentra una cedula
+        	if (palabra.length===2){ // reviso si seraro en un arreglo de 2 lo cual es una cedula V-0000000  -> [V] = 0 '-' [0000000] = 1 
+
+        		// DOY UNA ALERTA PARA SABER USUARIO EL USUARIO QUE SE ACTUALIZARA LOS DATOS
+        		console.log('es una cedula: '+ getnew+' parte 1: '+palabra[0]+' parte2: '+palabra[1]);
+        		cargarform(3); // cargo solo el formulario para actualizacion de datos del representante 
+        	}else{ // en caso de no ser una cedula verifico si tiene el valor del '1' cuyo valor es enviado solo cuando es un nuevo estudiante no registrado
+        		if (getnew==='1'){
+        			// MANDO UNA ALERTA PARA SABER QUE ES UN USUARIO NUEVO
+        			// puede servir para llamar el formulario nuevo estudiante
+        			console.log('es un nuevo estudiante: '+ getnew);
+        			cargarform(1); // cargo el formulario 1
+        		}else{// en caso de no ser el valor 1 reviso que la url no este vacia por accidente.
+        			if (getnew==''||getnew==' '||getnew==null||getnew==undefined){
+        				console.log('esta vacio'); //alerta de vacio
+        				window.location='./';
+        			}else{
+        				//siendo que no existe otro modo de ingresar un get verifico que sean solo "numeros"
+        				var resultado= validartexto(getnew);
+        				if (!resultado) {
+        				console.log('es un estudiante existentete: '+ getnew);	
+        				cargarform(2); // llamo a la carga del formulario 1
+        				}else{
+        				console.log('no es un estudiante existentete: '+ getnew);
+        				cargarform('default');	
+        				}
+        				
+        			}
+        			
+        		}
+        	}// identifica el usuario
+
+
+function validartexto(parametro) {
+    var patron = /^[a-zA-ZÑñ\s]*$/;
+    if (parametro.search(patron)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function cargarform(parametro){
+	switch(parametro){
+		case 1:
+		console.log('formulario de un nuevo estudiante solicitado');
+		$('.formulario-').load('formularios/nuevo.html');
+
+		break;
+		case 2:
+		console.log('formulario de un nuevo estudiante existente solicitado');
+		break;
+		case 3:
+		console.log('formulario de actualizacion de datos del representante');
+		break;
+		default:
+		alert('Lamento notificarle que algo ha salido mal al pedir el formulario por favor intentelo de nuevo.');
+		window.location='./';
+	}
+}
+
+
+
+
+
+
+      // tokens de session ingrese codigo dentro del tokens
+        }else{
+        	window.location='./';
+        }
+   </script>
+</html>
