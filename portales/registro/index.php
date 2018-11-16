@@ -22,8 +22,8 @@
 
 
 
-    <h3><b>Bienvenido al registro del sitema de gestion escolar para la U.E.B. Angel Celestino Bello</b></h3>
-    <br><p><big><b>Querido Usuario Por favor Lea con detenimiento y rellene todos los campos requerido para su correcta creacion de la cuenta en el sistema del plantel, si necesita ayuda o dirección tecnica acuda a al departamento de informatica del plantel.</b><br></big></p></div></div>
+    <h3><b>Bienvenido al registro del sitema</b></h3>
+    <br><p><big><b>Querido Usuario Por favor Lea con detenimiento y rellene todos los campos requerido para su correcta creacion de la cuenta en el sistema.</b><br></big></p></div></div>
 <div class="divider"></div>
     <div class='card-content'>
     <nav><div class='nav-wrapper teal z-depth-3'><div class='col s12'>
@@ -277,7 +277,7 @@
   <i class=' center medium material-icons'>work</i>
   <h4>Datos de Area Laboral</h4>
   <br>
-  <p><big><b>Lea con detenimiento y rellene todos los campos requerido para su correcta inscripcion en el sistema de gestion escolar de la unidad educativa angel celestino bello, estos datos son de gran importancia y seran revisados para su posible aprobación, tenga en cuenta que al finalizar debera ingresar con su cuenta al sistema de gestion escolar para obtenga informacion del estado de su solicitud y habilitacion del sistema en su area.</b><br></big></p></div></div>
+  <p><big><b>Lea con detenimiento y rellene todos los campos requerido, estos datos son de gran importancia y seran revisados para su posible aprobación.</b><br></big></p></div></div>
 <br>
 <div class="divider"></div>
 <div class='row'>
@@ -384,6 +384,7 @@
       <option value="Salud">Salud</option>
       <option value="Educacion fisica">Educacion fisica / Deporte</option>
       <option value="Ajedrez">Ajedrez</option>
+      <option value="Ajedrez">Musica y Cultura</option>
     </select>
     <label>Especialidad</label>
     </div>
@@ -441,13 +442,6 @@
       <a id="deacuerdo" class="white-text modal-action modal-close waves-effect waves-green btn-flat teal">Correcto</a>
     </div>
   </div>
-<!--
-<div id="error404" hidden="false">
-<style>body{background-image: url('../../assets/img/imgs/rocket.gif'),url('../../assets/img/imgs/giphy2.gif');background-repeat: no-repeat, repeat;text-align:center;}div{display: none;}</style></div></div></div><br><br><br><br><br><br><br><br><br>
-
-  <h1><i><b>ERROR<br>4 0 4</b><br>¿Parece que nos hemos perdido en el espacio?</i></h1><br><a class='btn' href='../'>¡Volver a Tierra!</a><br><br><br>
-</div>
-fin del formulario-->
 
 
         </body>

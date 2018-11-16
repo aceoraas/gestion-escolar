@@ -16,7 +16,7 @@
 
   	<a href="#" style="padding: 0;" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     
-    <a href="#!" class="brand-logo center center-align ">
+    <a href="./index.php" class="brand-logo center center-align ">
 
       <img class="responsive-img hide-on-small-only" src="../../assets/img/imgs/ESCUDO.SVG" style="width: 9%; padding-top: 4px;"><h5 class="hide-on-med-and-up">Angel Celestino Bello</h5></a>
     
@@ -29,7 +29,6 @@
       <li><a  class="dropdown-button" href="#!" data-activates="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
 
       
-      <li><a  href="#"><i class="material-icons right">chat</i>Chat</a></li>
       <li><a id="btnsalida" href="../../procesos/salida.php">Salir<i class="material-icons right">exit_to_app</i></a></li>
     </ul>
 
@@ -51,7 +50,6 @@
       <li><a href="./" ">Asistencia<i class="material-icons left">grain</i></a></li>
       <li><a  href="Resumen.php">Resumen<i class="material-icons left">content_paste</i></a></li>
       <li class="inscripcion-active"><a href="../inscripcion/"><i class="material-icons left">assignment_ind</i>Inscripcion</a></li>
-      <li><a  href="#">Chat<i class="material-icons left">chat</i></a></li>
       <li><a id="btnsalida" href="../../procesos/salida.php">Salir<i class="material-icons left">exit_to_app</i></a></li>
       </ul>
 
@@ -104,6 +102,7 @@ setInterval(ins(),1000);
 
 $('#btnsalida').on('click',function(){
   sessionStorage.removeItem('misdatosusuario');
+  localStorage.removeItem('misdatos');
   sessionStorage.removeItem('firs');
 
 });

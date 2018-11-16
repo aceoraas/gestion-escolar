@@ -33,22 +33,6 @@ function geturl($tipo = [])
 
             break;
 
-        case 'otro':
-            switch ($tipo[1]) {
-                case '1':
-                    return 'opcion1';
-                    break;
-
-                case '2':
-                    return "opcion2";
-                    break;
-
-                default:
-                    # code...
-                    break;
-            }
-            break;
-
         case 'Salud':
             return "../portales/salud/";
             break;
@@ -57,14 +41,14 @@ function geturl($tipo = [])
             break;
 
         case 'Directivo':
-            return "../portales/direcion/";
+            return "../portales/direccion/";
             break;
         case 'Lopna':
             return "../portales/lopna/";
             break;
 
         default:
-            # code...
-            break;
+                 return "../portales/otro/";
+           break;
     }
 }

@@ -86,8 +86,8 @@ $f=base64_decode($_GET['n']);
                
                </div>        		 
 
-           <a id='salida2' href="./<?php echo $f; ?>/" class="btn red">Volver</a>             
-            <a id='salida2' href="#" class="btn">Guardar Cambios</a>
+           <a id='salida2' class="btn red">Volver</a>             
+            <a id='salida3' href="#" class="btn">Guardar Cambios</a>
            
         </div>      
       </div>
@@ -122,7 +122,6 @@ $f=base64_decode($_GET['n']);
     return edad;
 }
 
-exite('log');
 //..............Datos de ususarios formulario............
 $('#usernameform').val(objse.usuario);
 $('#btnContrasena').on('click',function(){
@@ -148,6 +147,8 @@ $('#btnContrasena').on('click',function(){
    }
   
   $('#salida2').on('click',function() {
+      
+    window.location='../portales/'+obj.CARGO.TIPO.toLowerCase();
     
   });
 </script>

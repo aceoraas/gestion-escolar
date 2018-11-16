@@ -26,8 +26,12 @@ function getalumnos(cantidad) {
             }
             localStorage.removeItem('alumnos');
             savedlocalstorage('alumnos', alumnos);
+
         }
     });
+    var total = { cantidad: alumnos.length };
+
+            return total;
 }
 
 function getrepresentantes(cantidad) {
@@ -53,6 +57,7 @@ function getrepresentantes(cantidad) {
             }
             localStorage.removeItem('representantes');
             savedlocalstorage('representantes', representantes);
+
         }
     });
 }

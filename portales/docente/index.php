@@ -141,10 +141,6 @@ var html = '<div class="preloader-wrapper big active"><div class="spinner-layer 
   
   compararalumno(data);
 
-
-
-  
- setTimeout(400);
 },
 
 
@@ -190,11 +186,11 @@ $('.cantidad').html('<h2>'+(total.cantidad)+'</h2>');
   
 
   for (var i = 0; i < alumnos.length; i++){
-    if (sessionStorage.listnegativo==null) {
+    if (localStorage.listnegativo==null) {
       n[i]=alumnos[i].C_E;
       
     }else{
-      n = JSON.parse(sessionStorage.listnegativo);
+      n = JSON.parse(localStorage.listnegativo);
 
       asistidos();
     }
@@ -212,12 +208,12 @@ function compararalumno(codigo){
 
   for (var i = 0; i < alumnos.length; i++){
 
-    if (sessionStorage.listnegativo==null) {
+    if (localStorage.listnegativo==null) {
       n[i]=alumnos[i].C_E;
 
       
     }else{
-      n = JSON.parse(sessionStorage.listnegativo);
+      n = JSON.parse(localStorage.listnegativo);
     }
     
 
@@ -231,12 +227,12 @@ function compararalumno(codigo){
     $('#fotoalumno').html('<img class="circle z-depth-3 resposive-img" width="100" src="../../assets/img/'+alumnos[0].UrlImagen+'">');
     $('#qrasistencia').html('<h4>'+alumnos[i].PNombre+' '+alumnos[i].PApellido+'</h4><h6><b>Cedula Estudiantil:</b> '+alumnos[i].C_E+'</h6><h5><b>Genero:</b> '+sexo(alumnos[i].Sexo)+'<br><blockquote><b>Edad:</b>'+calcularEdad(alumnos[i].Fecha_Nacimiento)+'</blockquote></h5>');
     alumnosnoasistido(codigo);
-      sessionStorage.removeItem('listpositivo');
-      savedsessionStorage('listpositivo', s);
+      localStorage.removeItem('listpositivo');
+      savedlocalstorage('listpositivo', s);
     
   } 
-      sessionStorage.removeItem('listnegativo');
-      savedsessionStorage('listnegativo', n);
+      localStorage.removeItem('listnegativo');
+      savedlocalstorage('listnegativo', n);
     
   }
 
@@ -259,7 +255,7 @@ function compararalumno(codigo){
 
   function sexo(a){
     if(a=='F'){
-      return 'Femenina';
+      return 'Femenino';
     }
     else{
       return 'Masculino';
@@ -270,7 +266,7 @@ function compararalumno(codigo){
 
 function asistidos(){
   
-   var listpositivo = sessionStorage.getItem('listpositivo');
+   var listpositivo = localStorage.getItem('listpositivo');
 
     if (listpositivo == null) {
         s = [];
@@ -290,11 +286,11 @@ function alumnosnoasistido(codigo){
     if(n[i]===codigo){
       
       n.splice(i, 1);
-      sessionStorage.removeItem('listnegativo');
-      savedsessionStorage('listnegativo', n);
+      localStorage.removeItem('listnegativo');
+      savedlocalstorage('listnegativo', n);
     }
   }
-   var listnegativo = sessionStorage.listnegativo;
+   var listnegativo = localStorage.listnegativo;
     if (listnegativo == null) {
         n = [];
     } else {

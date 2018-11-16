@@ -36,6 +36,28 @@
             
 
  	}
+
+  public function getdatamatricula(){
+
+      $r = $this->db->find(
+            [
+               "tablename" => "ins_matricula"
+            ],
+            [
+                
+                'projection' => [
+                    '_id' => 0,
+                    "tablename" => 0
+
+                ],
+            ]);
+
+            foreach ($r as $key => $value) {
+              return $a['$key']=$value;
+            }
+            
+
+  }
  }
 
 

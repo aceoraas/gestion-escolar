@@ -216,7 +216,7 @@ function vcedula($a, $b)
               for ($i = 0; $i <= $a; $i++) {
                 $nombre = $nombre . " " . $nombres[$i];
               }
-              for ($i = 1; $i <= 2; $i++) {
+              for ($i = 0; $i <= 2; $i++) {
                 $apellido = $apellido . " " . $ape[$i];
               }
               

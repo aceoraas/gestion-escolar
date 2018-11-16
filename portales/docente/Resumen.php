@@ -73,7 +73,7 @@
 
 <!-- fin del cuerpo-->
 </body>
-<script type="text/javascript" src="../../procesos/validacion/session.js"></script>
+<!--<script type="text/javascript" src="../../procesos/validacion/session.js"></script>-->
 <script type="text/javascript" src="../../procesos/datos/datos.js">
 	
 </script>
@@ -81,15 +81,15 @@
 
 <script type="text/javascript">
 
-exite('log');
+//exite('log');
 $( document ).ready(function() {
 var hoy = new Date();
 var dd = hoy.getDate();
 var mm = hoy.getMonth()+1;
 var yyyy = hoy.getFullYear();
 	
-var s = JSON.parse(sessionStorage.listpositivo);
-var n = JSON.parse(sessionStorage.listnegativo);
+var s = JSON.parse(localStorage.listpositivo);
+var n = JSON.parse(localStorage.listnegativo);
 
 
 

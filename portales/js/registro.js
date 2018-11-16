@@ -1191,7 +1191,7 @@ $('#btnRegistrar').on('click', function() {
     var tm = document.getElementById('movil').value;
     var tf = document.getElementById('fijo').value;
     var d = document.getElementById('dirdetalle').value;
-    informacionpersonal = '{"Cedula" : "' + cedula + '","PNombre" :"' + n1 + '","SNombre" :"' + n2 + '","PApellido" : "' + a1 + '","SApellido" : "' + a2 + '","Fecha_Nacimiento" : "' + fn + '","Sexo" : "' + g + '","Correo" : "' + m + '","Numero_contacto" : {"Fijo" : "' + tf + '","Movil" : "' + tm + '"},"Direccion" : "' + d + '","CARGO" : ' + jsonwork + '}';
+    informacionpersonal = '{"Cedula" : "' + cedula + '","PNombre" :"' + n1 + '","SNombre" :"' + n2 + '","PApellido" : "' + a1 + '","SApellido" : "' + a2 + '","Fecha_Nacimiento" : "' + fn + '","Sexo" : "' + g + '","Correo" : "' + m + '","Numero_contacto" : {"Fijo" : "' + tf + '","Movil" : "' + tm + '"},"UrlImagen" : "imgs/alumnos/V-27226408.jpg","Direccion" : "' + d + '","CARGO" : ' + jsonwork + '}';
     var obj = JSON.parse(informacionpersonal);
     var escribe;
     escribe = document.getElementById("mn").innerHTML = "<h6>" + obj.PNombre + ' ' + obj.SNombre + "</h6>";
@@ -1225,7 +1225,7 @@ $('#deacuerdo').on('click', function() {
         type: 'post',
         success: function(respuesta) {
             console.log(respuesta);
-            alert('Excelente Gracias por completar el registro, su datos seran analizados, mientras podrá ingresar al sistema con su usuario y contraseña, se le informara atravez de su cuenta del sistema su estado de actividad, en cuanto sea habilitado podra usar libremente de las herramientas que les brinda el sistema según su cargo en la institución posterior a la confirmación. Si existe alguna queja o duda informelo a al departamento de Dirección.');
+            alert('Excelente, Gracias por completar el registro, esperando Confirmacion.');
             window.location = "../../";
         }
     });

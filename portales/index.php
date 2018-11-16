@@ -25,9 +25,14 @@
     <body>
         <!--titulo de inicio-->
         <center>
-            <div class="white">
-                <img class="responsive-img" src="../assets/img/imgs/cintillo_cenditel_2017.png" style="width: 80%;">
-                </img>
+            <div class="white row">
+                
+                
+                <img class="responsive-img col s12 " style="height: 3em; width: auto;" src="../assets/img/imgs/gobierno_bolivariano_de_venezuela.png"></img>
+
+                <img class="responsive-img right" style="height: 4em; width: auto;"  src="../assets/img/imgs/cintillo_basica.png"></img>
+                
+
             </div>
         </center>
         <div class="container" style="margin-top: 5%">
@@ -37,13 +42,13 @@
                         <!--IDENTIFICACION DEL SITIO-->
                         <div class="row">
                             <div class="col s12 l3">
-                                <img class="responsive-img" src="../assets/img/imgs/ESCUDO.SVG" style=" width: 60%">
+                                <img class="responsive-img" src="../assets/img/imgs/ESCUDO.SVG" style=" width: 100%;">
                                 </img>
                             </div>
                             <div class="col s12 l9 ">
-                                <h3>
-                                    Unidad Educativa Bolivariana Ángel Celestino Bello
-                                </h3>
+                                <h4>
+                                    Escuela Bolivariana <br> Ángel Celestino Bello
+                                </h4>
                             </div>
                         </div>
                         <!--FORMULARIO-->
@@ -66,23 +71,34 @@
                                 </div>
                                 <!--botones de login-->
                             </div>
-                            <br>
+                            
                                 <div class="row">
-                                    <div class="col s12 l5" style="padding-top: 1em; padding-bottom: 1em;">
+
+                                    <div class="col s12 l12" style="padding-top: 1em; padding-bottom: 1em;">
                                         <a class="waves-effect waves-light btn red" id="btnentrar" type="submit">
                                             Entrar
                                         </a>
                                     </div>
-                                    <div class="col s12 l7" style="padding-top: 1em; padding-bottom: 1em;">
-                                        <a class="waves-effect waves-light btn grey" href="recuperar">
-                                            Olvide mi usuario o contraseña
+                                    <div class="col s12 l6" style="padding-top: 1em; padding-bottom: 1em;">
+                                        <a class="waves-effect waves-light btn grey" href="#pendiente-recuperar">
+                                            Olvide mi cuenta
                                         </a>
                                     </div>
+                                    <div class="col s12 l6" style="padding-top: 1em; padding-bottom: 1em;">
+                                        <a class="waves-effect waves-light btn" href="registro/index.php">
+                                            Registrarse
+                                        </a>
+                                    </div>
+                                    <!--<div class="col s12 l4" style="padding-top: 1em; padding-bottom: 1em;">
+                                        <a class="waves-effect waves-light btn" href="#funcion pendiente">
+                                            Asistencia
+                                        </a>
+                                    </div>-->
                                 </div>
-                            </br>
                         </form>
                     </center>
                     <br>
+                        <div class="divider"></div>
                         <!--Cartelera informativa-->
                         <div class="row">
                             <div>
@@ -105,36 +121,7 @@
                             </div>
                         </div>
                         <!--botones para otras opciones del sistema-->
-                        <center>
-                            <div class="row">
-                                <div class="col s12 l12">
-                                    <div class="col s12 l6" style="padding-top: 1em; padding-bottom: 1em;">
-                                        <a class="waves-effect waves-light btn" href="registro/index.php">
-                                            Nueva Cuenta
-                                        </a>
-                                    </div>
-                                    <div class="col s12 l6" style="padding-top: 1em; padding-bottom: 1em;">
-                                        <a class="waves-effect waves-light btn" href="##">
-                                            Asistencia Trabajadores
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </center>
-                        <br>
-                            <br>
-                                <br>
-                                    <br>
-                                        <br>
-                                            <br>
-                                                <!--scripts-->
-                                            </br>
-                                        </br>
-                                    </br>
-                                </br>
-                            </br>
-                        </br>
-                    </br>
+                        
                 </div>
             </div>
         </div>
@@ -142,13 +129,12 @@
 </html>
 <script src="js/login.js" type="text/javascript">
 </script>
-<script type="text/javascript" src="../../procesos/validacion/session.js"></script>
-<script type="text/javascript" src="../../procesos/validacion/tokens.js"></script>
+
 <script async="" charset="utf-8" type="text/javascript">
     $(document).ready(function(){
         
         $('#Cartelera-titulo').html('Desarrolladores del sistema');
-        $('#Cartelera-contenido').html('<b>Ricardo Acero:</b> Desarrollador de codigo, Diseño y Base de Datos.<br><b>Ramon Salazar:</b> Documentacion y medidador de cliente.<br><b>Ricardo Marin:</b> Documentacion, Analista de UX y UI, Backup de codigo.<br> Desarrollado para la obtencion del titulo de TSU, en la Universidad Politecnica Jose Antonio Anzoategui');
+        $('#Cartelera-contenido').html('<div class="col s12 l7"><b>Ricardo Acero:</b> Desarrollador de codigo, Diseño y Base de Datos.<br><b>Ramon Salazar:</b> Documentacion y medidador de cliente.<br><b>Ricardo Marin:</b> Documentacion, Analista de UX y UI, Backup de codigo.<br> Desarrollado para la obtencion del titulo de TSU, en la Universidad Politecnica Jose Antonio Anzoategui</div><div class="col s12 l5 center"><img class="responsive-img circle" style="width: 140px; height: auto;" src="../assets/img/imgs/download.jpeg"></div>');
 
     });
 </script>

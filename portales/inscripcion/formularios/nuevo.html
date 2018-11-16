@@ -26,30 +26,158 @@
     color: #017c77;
 }
 </style>
+
+<script type="text/javascript" src="./formularios/js/validaciones.js"></script>
+
+<script type="text/javascript">
+ 
+
+        function upload_imga(){
+var formData = new FormData($("#formUpload1")[0]);
+
+    $.ajax({
+    type: 'POST',
+    url: '../../procesos/datos/uploadimgrepresentante.php',
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function (data) {
+
+        console.log(data);
+    var cod= $('#nacio').val()+'-'+$('#cedula').val();
+     var old_name = $('#path1').val();
+
+     var mensaje={
+        cod: cod,
+        old_name: old_name,
+        tipe: 'representante'
+     };
+
+     
+       $.ajax({
+            type: 'post',
+            url: '../../assets/img/imgs/representante/rename.php',
+            data: mensaje,
+            success: function (data) {
+                // body...
+                $('.fotorepresentante').html(data);
+                $('.btnfotorepresentante').hide();
+                $('.btntfoto1').hide();
+                $('#borrarftorepresentante').show();
+            }
+        });
+
+        
+     
+    }
+    });
+}
+
+function upload_imgb(){
+
+    var formData = new FormData($("#formUpload2")[0]);
+
+     
+     
+    
+    
+    
+    $.ajax({
+    type: 'POST',
+    url: '../../procesos/datos/uploadimgalumno.php',
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function (data) {
+
+        console.log(data);
+    var cod= $('#c_e').val();
+     var old_name = $('#path2').val();
+
+     var mensaje={
+        cod: cod,
+        old_name: old_name,
+        tipe: 'alumnos'
+     };
+
+     
+       $.ajax({
+            type: 'post',
+            url: '../../assets/img/imgs/alumnos/rename.php',
+            data: mensaje,
+            success: function (data) {
+                // body...
+                $('.fotoalumno').html(data);
+                $('.btnfotoalumno').hide();
+                $('.btntfoto2').hide();
+                $('#borrarftoalumno').show();
+            }
+        });
+
+        
+     
+    }
+    });
+
+    
+
+
+
+}
+</script>
+
+
+<script type="text/javascript" src="../js/picker.js"></script>
+
+
+<!--Formulario de disponibilidad de vacantes-->
+
+<div class="vacante">
+    <div class="card">
+        <div class="card-content black-text row">
+        <div class="divider  col s12 l12" style="margin-top: 1em; margin-bottom: 1em;"></div>
+                    <center><h4>Grados y Secciones Disponibles</h4></center>
+                    <div class="col s12 l6">
+                         <select id="ins_area">
+                            <option disabled="" selected="" value="">Selecione un Grado
+                            </option>
+                            <optgroup  id="lib_inicial" label="Inicial">
+                            </optgroup>
+                            <optgroup id="lib_basica" label="Basica">
+                            </optgroup>
+                        </select>
+                    </div><div class="col s12 l6">
+                        <select id="lib_se">
+                            <option disabled="" selected="" value="">Selecione una Seccion
+                        </select>
+                    </div>
+                    <div class="divider  col s12 l12" style="margin-top: 1em; margin-bottom: 1em;"></div>
+                    <div class="row center">
+            <div class="col s12 l12">
+            <a  disabled="" class="btn waves-effect waves-light">atras</a>
+            <a  class="btn btn_next waves-effect waves-light">Continuar</a>  
+            </div>
+             </div>
+    </div>
+
+
+</div>
+
+</div>
+
+<!--PRIMER FORMULARIO DATOS REPRESENTANTES-->
+
+<div class="Representante ">
 <div class="s12 l12 center">
 	<h2>Datos del Representante</h2>
 </div>
-<div class="col s12 l12 black-text Representante card" style="margin-top: 3em;">
+<div class="col s12 l12 black-text card" style="margin-top: 3em;">
     <div class="card-content ">
         <div class="row">
             <form class="col s12">
                 <div class="row">
-                    <div class="input-field col s12 l6">
-                        <input class="validate" id="first_name" placeholder="Ingrese los nombres completo" type="text">
-                        <label for="first_name">
-                            Nombres
-                        </label>
-                    </div>
-                    <div class="input-field col s12 l6">
-                        <input class="validate" id="last_name" placeholder="Ingrese los apellidos completos" type="text">
-                        <label for="last_name">
-                            Apellidos
-                        </label>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="input-field col s6 l4">
-                        <select>
+                        <select id="nacio">
                             <option disabled="" selected="" value="">Selecione una nacionalidad
                             </option>
                             <option value="V">Venezolano
@@ -62,13 +190,28 @@
                         </label>
                     </div>
                     <div class="input-field col s6 l8">
-                        <input class="validate" id="disabled" placeholder="Ingrese el numero de Cedula" type="text">
-                        <label for="disabled">
+                        <input class="validate" id="cedula" placeholder="Ingrese el numero de Cedula" type="text">
+                        <label id="labelcedula">
                             Cedula
                         </label>
                     </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 l6">
+                        <input class="validate" id="primer_name" placeholder="Ingrese los nombres completo" type="text">
+                        <label >
+                            Nombres
+                        </label>
+                    </div>
+                    <div class="input-field col s12 l6">
+                        <input class="se" id="segundo_name" placeholder="Ingrese los apellidos completos" type="text">
+                        <label for="last_name">
+                            Apellidos
+                        </label>
+                    </div>
                     <div class="input-field col s6 l4">
-                        <select>
+                        <select id='gerenorepre'>
                             <option disabled="" selected="" value="">Selecione su Genero
                             </option>
                             <option value="M">Masculino
@@ -80,8 +223,8 @@
                         </label>
                     </div>
                     <div class="input-field col s6 l8">
-                        <input type="text" class="datepicker">
-                        <label>Fecha de Nacimiento
+                        <input type="text" id="fechanacii" class="datepicker">
+                        <label >Fecha de Nacimiento
                         </label>
                     </div>
                 </div>
@@ -93,11 +236,50 @@
                         </label>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="input-field col s12 l4">
+                        <input class="validate" id="numeromovil" type="email">
+                        <label >
+                            Numero Fijo
+                        </label>
+                    </div>
+                    <div class="input-field col s12 l4">
+                        <input class="validate" id="numerofijo" type="email">
+                        <label >
+                            Numero Movil
+                        </label>
+                    </div>
+                    <div class="input-field col s12 l4">
+                        <input class="validate" id="numerofamiliar" type="email">
+                        <label >
+                            Numero Familiar
+                        </label>
+                    </div>
+                     <div class="input-field col s12 l12">
+                        <input class="validate" id="direccion" type="email">
+                        <label >
+                            Direccion
+                        </label>
+                    </div>
+                    <div class="input-field col s12 l6">
+                        <input class="validate" id="profesion" type="email">
+                        <label >
+                            Profesion
+                        </label>
+                    </div>
+                    <div class="input-field col s12 l6">
+                        <input class="validate" id="profesion-cargo" type="email">
+                        <label >
+                            Cargo
+                        </label>
+                    </div>
+
+                </div>
             </form>
             <div class="row center">
             <div class="col s12 l12">
-            <a href="#" disabledex class="btn">atras</a>
-            <a href="#" class="btn">Continuar</a>	
+            <a  class="btn btn_atras1 waves-effect waves-light">atras</a>
+            <a  class="btn btn_next1 waves-effect waves-light">Continuar</a>	
             </div>
              </div>
             
@@ -107,77 +289,301 @@
 </div>
 
 </div>
-<!--
-<div class="col s12 l12 alumno">
-    <div class="row">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s6">
-                    <input class="validate" id="first_name" placeholder="Placeholder" type="text">
+</div>
+
+
+<!--SEGUNDO FORMULARIO DATOS ALUMNO-->
+
+<div class="alumno">
+<div class="s12 l12 center">
+    <h2>Datos del Alumno</h2>
+</div>
+<div class="col s12 l12 card black-text" style="margin-top: 3em;">
+
+    <div class="card-content ">
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12 l3">
+                        <input class="validate" id="nombre1" placeholder="Ingrese los nombres completo" type="text">
                         <label for="first_name">
-                            Nombres
+                           Primer Nombre
                         </label>
-                    
-                </div>
-                <div class="input-field col s6">
-                    <input class="validate" id="last_name" type="text">
+                    </div>
+                    <div class="input-field col s12 l3">
+                        <input class="validate" id="nombre2" placeholder="Ingrese los nombres completo" type="text">
+                        <label for="first_name">
+                            Segundo Nombre
+                        </label>
+                    </div>
+                    <div class="input-field col s12 l3">
+                        <input class="validate" id="apellido1" placeholder="Ingrese los apellidos completos" type="text">
                         <label for="last_name">
-                            Apellidos
+                           Primer Apellido
                         </label>
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input class="validate" disabled="" id="disabled" type="text" value="I am not editable">
+                    </div>
+                    <div class="input-field col s12 l3">
+                        <input class="validate" id="apellido2" placeholder="Ingrese los apellidos completos" type="text">
+                        <label for="last_name">
+                            Segundo Apellido
+                        </label>
+                    </div>
+                
+                    <div class="input-field col s6 l6">
+                        <input class="validate" id="c_e" placeholder="Ingrese el numero de Cedula" type="text">
                         <label for="disabled">
-                            Disabled
+                            Codigo Estudiantil
                         </label>
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input class="validate" id="password" type="password">
-                        <label for="password">
-                            Password
+                    </div>
+
+                    <div class="input-field col s6 l6">
+                        <select id="generoalumno">
+                            <option disabled="" selected="true" value="">Selecione su Genero
+                            </option>
+                            <option value="M">Masculino
+                            </option>
+                            <option value="F">Femenino
+                            </option>
+                        </select>
+                        <label>Genero
                         </label>
+                    </div>
                     
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input class="validate" id="email" type="email">
-                        <label for="email">
-                            Email
+                    <div class="input-field col s6 l6">
+                        <input type="text" id='b' class="datepicker">
+                        <label>Fecha de Nacimiento
                         </label>
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    This is an inline input field:
-                    <div class="input-field inline">
-                        <input class="validate" id="email" type="email">
-                            <label data-error="wrong" data-success="right" for="email">
-                                Email
-                            </label>
-                        
+                    </div>
+                    <div class="input-field col s6 l6">
+                        <input type="text" id='representanteform-2' >
+                        <label>Representante
+                        </label>
                     </div>
                 </div>
+           
+
+                <div class="divider" style="margin-bottom: 1em; margin-top: 1em;"></div>
+                
+                    <center><h4>Condicion Especial</h4></center>
+
+                <div class="row">
+
+                    <div class="input-field col s12 l6">
+                        <input type="text" id='condicionfisica' >
+                        <label>Tipo de condicion 
+                        </label>
+                    </div>
+
+                    <div class="input-field col s12 l6">
+                        <input class="validate"   type="text" id="condicionfisica_descripcion">
+                        <label>Descripcion</label>
+                       
+                    </div>
+
+
+              <center><h4 class="col s12 l12">Ropa</h4></center>
+
+                    <div class="input-field col s12 l4">
+                        <input class="validate" id="talla_camisa" type="text" placeholder="solo el numero">
+                        <label >
+                            Talla de Camisa
+                        </label>
+                    </div>
+
+                    <div class="input-field col s12 l4">
+                        <input class="validate" id="talla_pantalon"  type="text" placeholder="Solo el numero">
+                        <label >
+                            Talla de Pantalon
+                        </label>
+                    </div>
+
+                    <div class="input-field col s12 l4">
+                        <input class="validate" id="talla_zapato" type="text" placeholder="Solo el numerito">
+                        <label >
+                           Talla de zapato
+                        </label>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+            <div class="row center">
+            <div class="col s12 l12">
+            <a class="btn btn_atras2 waves-effect waves-light">atras</a>
+            <a class="btn btn_next2 waves-effect waves-light">Continuar</a>  
             </div>
-        </form>
+             </div>
+            
+            
+        </div>
     </div>
-</div>-->
+   
+</div>
 
 
-<a href="./" class="btn red"><i class="material-icons prefix left">exit_to_app</i>Salir</a>
+<!--TERCER FORMULARIO FOTOS-->
+
+<div class="foto">
+    <div class="row">
+        <div class="card black-text center">
+
+    <!-- FOTO PARA EL Representante -->
+
+                <div class="card-content col s12 l6 white" style="margin-top: 1em; margin-bottom: 1em;">
+                    <div class="col s12 l12">
+                            <h4>Representante</h4>
+                            <div class="fotorepresentante">
+                            <img class="circle z-depth-3" height="151px" width="113px" id="previa1" src="../../assets/img/imgs/personal/V-27226408.jpg">
+                        </div>
+                            <div class="fto1" style="margin-top: 1em;">
+                                <!--<a class="btn btntfoto2 waves-effect waves-light"> tomar Foto</a>-->
+                            <a id="borrarftorepresentante" class="btn red waves-effect waves-light">Borrar</a>
+                            <div class="btnfotorepresentante">
+                                <form id="formUpload1" method="post" enctype="multipart/form-data">
+                                    <div class="file-field input-field">
+                                        <div class="btn">
+                                            <span>Subir una foto</span>
+                                            <input type="file" name='file'  onchange="upload_imga()" >
+                                            
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" id="path1" type="text">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+
+    <!--FIN------------>
+    <!-- FOTO PARA EL ALUMNO -->
+    
+                    <div class="card-content white col s12 l6" style="margin-top: 1em; margin-bottom: 1em;">
+                        <div class="col s12 l12 ">
+                            <h4>Alumno</h4>
+                            <div class="fotoalumno">
+                                <img class="circle z-depth-3" height="151px" width="113px" id="previa2" src="../../assets/img/imgs/personal/V-27226408.jpg">
+                            </div>
+                            
+                             <div class="fto2" style="margin-top: 1em;">
+                                 <!--<a class="btn btntfoto1 waves-effect waves-light"> tomar Foto</a>-->
+                            
+                        <a id="borrarftoalumno" class="btn red waves-effect waves-light">borrar</a>
+                            <div class="btnfotoalumno">
+                                <form  id="formUpload2"   method="post" enctype="multipart/form-data">
+                                        <div class="file-field input-field">
+                                        <div class="btn">
+                                            <span>Subir una foto</span>
+                                            <input type="file" name='file' onchange="upload_imgb()">
+                                            
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                        <input class="file-path validate" id="path2" type="text">
+                                        </div>
+                                        </div>
+                                </form>
+                                
+                            </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+    <!--FIN------------>
+            </div>
+    </div>
+</div>
 
 
-<script type="text/javascript" src="../../js/picker.date.js"></script>
-<script type="text/javascript">
+
+<a href="./" class="btn red waves-effect waves-light"><i class="material-icons prefix left">exit_to_app</i>Salir</a>
+<a class="btn teal btn_atras3 waves-effect waves-light">Volver</a>
+<a class="btn green large right matricula waves-effect waves-light">Matricular</a>
+
+<script type="text/javascript" >
+  
+
+
+ var matricula=0; 
+
+function disponibilidadmatricula() {
+    
+      $.ajax({
+        type: 'post',
+        url: '../../procesos/datos/vacante.php',
+        success: function (data){
+            matricula = JSON.parse(data);
+        }
+
+    });
+
+  }
+    
+
 $(document).ready(function() {
+    
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+disponibilidadmatricula();
+
+  cargarnivelesygrados(); 
+
+  cargarsecciones();
+
+
+
+
+
+
+
+// calculadora de matricula.
+// ------------------------------------------
+function cargarnivelesygrados(){
+    
+
+    var p=['er','do','er','to','to','to'];
+
+    var anios_basica= 6;
+    var niveles_inicial=3;
+    
+    
+    
+    for (var i = 1; i <= niveles_inicial; i++) {
+        $('#lib_inicial').html($('#lib_inicial').html()+'<option value="I'+i+'">'+i+p[(i-1)]+' Nivel</option>');
+
+      
+    }
+
+    for (var i = 1; i <= anios_basica; i++) {
+        $('#lib_basica').html($('#lib_basica').html()+'<option value="'+i+'">'+i+p[(i-1)]+' Grado</option>');
+        
+        
+    }
+
+}
+
+
+function cargarsecciones() {
+    
+    var secciones=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+   
+   
+             for (var i = 0; i < secciones.length; i++) {
+                $('#lib_se').html($('#lib_se').html()+'<option value="'+secciones[i]+'">'+secciones[i]+'</option>');
+                }
+}
+
+
+
+
+
+
+
+// modulo pickerdate
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     $('select').material_select();
+
     $('.datepicker').pickadate({
         // Strings and translations
         monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
@@ -192,9 +598,246 @@ $(document).ready(function() {
         selectYears: 90,
         selectMonths: true,
         min: -32850,
-        max: -6570,
+        max: -720,
         closeOnSelect: true, // Close upon selecting a date,
         container: undefined, // ex. 'body' will append picker to body
     });
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//modulo btns on click show and hide btns photo
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//inicial estado
+$('.alumno').hide();
+$('.Representante').hide();
+$('.foto').hide();
+$('#borrarftoalumno').hide();
+$('#borrarftorepresentante').hide();
+$('.matricula').hide();
+$('.btn_atras3').hide();
+
+// acciones btns
+$('.btn_next').on('click', function () {
+    // body...
+    $('.Representante').show('slow');
+    $('.alumno').hide();
+    $('.vacante').hide('slow');
+    $('.foto').hide();
+    $('.btn_atras3').hide();
 });
+$('.btn_atras1').on('click', function () {
+    // body...
+    $('.vacante').show('slow');
+    $('.Representante').hide('slow');
+    $('.alumno').hide();
+    $('.foto').hide();
+    $('.btn_atras3').hide();
+});
+$('.btn_next1').on('click', function () {
+    // body...
+    $('.vacante').hide('slow');
+    $('.Representante').hide('slow');
+    $('.alumno').show();
+    $('.foto').hide();
+    $('.btn_atras3').hide();
+    $('#c_e').val($('#cedula').val()+'00'+getRandomNumber(1,1000));
+    $('#representanteform-2').val($('#nacio').val()+'-'+$('#cedula').val());
+});
+$('.btn_atras2').on('click', function () {
+    // body...
+    $('.vacante').hide('slow');
+    $('.Representante').show('slow');
+    $('.alumno').hide();
+    $('.foto').hide();
+    $('.btn_atras3').hide();
+});
+$('.btn_next2').on('click', function () {
+    // body...
+    $('.vacante').hide('slow');
+    $('.Representante').hide('slow');
+    $('.alumno').hide();
+    $('.foto').show();
+    $('.matricula').show();
+    $('.btn_atras3').show();
+});
+$('.btn_atras3').on('click', function () {
+    // body...
+    $('.vacante').hide('slow');
+    $('.Representante').hide('slow');
+    $('.alumno').show();
+    $('.foto').hide();
+    $('.matricula').hide();
+    $('.btn_atras3').hide();
+});
+
+
+$('#borrarftorepresentante').on('click',function () {
+    // body...
+    console.log('hola');
+    var old=$('#path1').val();
+    var old=old.split('.');
+    var imgnamedata;
+    imgnamedata = $('#nacio').val()+'-'+$('#cedula').val();
+               $.ajax({
+                    type: 'get',
+                    url: '../../assets/img/imgs/representante/unlink.php?d='+imgnamedata+'.'+old[1],
+                    beforesend:function () {
+                        // body...
+                        $('.fotorepresentante').html('<div class="preloader-wrapper small active"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>');
+                    },
+                    success:function(data) {
+                    console.log(data);
+                    $('.fotorepresentante').html('<img class="circle z-depth-3" height="151px" width="113px" id="previa2" src="../../assets/img/imgs/personal/V-27226408.jpg">');
+                    $('.btnfoto2').show();
+                    $('.btnfotorepresentante').show();
+                    $('#borrarftorepresentante').hide();
+                }});
+});
+$('#borrarftoalumno').on('click',function () {
+    // body...
+    console.log('hola');
+    var old=$('#path2').val();
+    var old=old.split('.');
+    var imgnamedata;
+    imgnamedata =$('#c_e').val();
+               $.ajax({
+                    type: 'get',
+                    url: '../../assets/img/imgs/alumnos/unlink.php?d='+imgnamedata+'.'+old[1],
+                    beforesend:function () {
+                       $('.fotoalumno').html('<div class="preloader-wrapper small active"><div class="spinner-layer spinner-green-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>');
+                    },
+                    success:function(data) {
+                    console.log(data);
+                    $('.fotoalumno').html('<img class="circle z-depth-3" height="151px" width="113px" id="previa2" src="../../assets/img/imgs/personal/V-27226408.jpg">');
+                    $('.btnfoto1').show();
+                    $('.btnfotoalumno').show();
+                    $('#borrarftoalumno').hide();
+                }});
+});
+
+$('#cedula').on('keyup', function() {
+   var data=CAMPOCEDULA("nacio","cedula");
+   if (typeof data!= "boolean"){
+    if (typeof data !="number") {
+        if (typeof data =="object") {
+     // es un objecto.
+        $('.se').removeClass('invalidate');
+        $('.se').addClass('validate');
+
+   }}
+    }else{
+        if (data!= true){
+        if (data == false || data == "0" || data == "" ){
+       
+        //es falso
+        alert('La cedula no es valida');
+        $('.se').removeClass('validate');
+        $('.se').addClass('invalidate');
+    }
+   }else{
+    // es verdadero pero no se busco en el cne
+    $('.se').removeClass('invalidate');
+    $('.se').addClass('validate');
+   }
+
+   }
+   
+});
+
+$('.matricula').on('click', function () {
+        
+alert('Felicidades usted a sido matriculado');
+
+ window.location="../docente/";
+
+/*var mensaje = {
+    representante : {
+        Cedula: $('#nacio').val()+'-'$('#cedula').val(),
+        Nombres: $('#primer_name').val(),
+        Apellidos: $('#segundo_name').val(),
+        Sexo: $('#gerenorepre').val(),
+        Fecha_Nacimiento: $('#fechanacii').val(),
+        Correo: $('#email').val(),
+        UrlImagen : "imgs/representante/"+$('#nacio').val()+'-'$('#cedula').val(),
+        Profesiones : {
+        Profesion : $('#profesion').val(),
+        Area : $('#profesion-cargo').val()
+        },
+        Numero_contacto : {
+        Fijo : $('numeromovil').val(),
+        Movil : $('numerofijo').val(),
+        Familiar : $('numerofamiliar').val()
+                    },
+    Direccion : $('#direccion').val()
+    },
+
+    alumno: {
+        a:"a"
+    }
+
+};
+/*
+        $.ajax({
+
+            data: mensaje,
+            url: "../../procesos/datos/guardaralumno.php",
+            type: "post",
+            success: function (data) {
+                if (data == "true") {
+                 console.log('-1 a disponibilidad y mas uno a activos');
+                }else{
+                    alert('lo siento no se guardo');  
+                    window.location="../../";     
+                }
+             
+            }
+
+        });*/
+}
+);
+
+
+
+$('#cedula').on('change', function() {
+   var data=CAMPOCEDULA("nacio","cedula");
+   if (typeof data!= "boolean"){
+    if (typeof data !="number") {
+     // es un objecto.
+   
+        $('.se').removeClass('invalidate');
+        $('.se').addClass('validate');
+   }
+    }else{
+        if (data!= true){
+        if (data == false || data == "0" || data == "" ){
+       
+        //es falso
+        alert('La cedula no es valida');
+        $('.se').removeClass('validate');
+        $('.se').addClass('invalidate');
+    }
+   }else{
+    // es verdadero pero no se busco en el cne
+    $('.se').removeClass('invalidate');
+    $('.se').addClass('validate');
+   }
+
+   }
+   
+});
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------random Number -----------------------------------------------------
+
+function getRandomNumber(low,high){
+ var r= Math.floor(Math.random()*(high-low + 1))+low;
+ return r;
+}
+
+
+
+//-
+// fin de la funcion document ready
+});
+    
 </script>

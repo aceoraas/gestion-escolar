@@ -65,5 +65,5 @@ class UsuariosDB
         }
         return $e;
     }
-
 }
+    
