@@ -134,7 +134,7 @@
     $(document).ready(function(){
         
         $('#Cartelera-titulo').html('Desarrolladores del sistema');
-        $('#Cartelera-contenido').html('<div class="col s12 l7"><b>Ricardo Acero:</b> Desarrollador de codigo, Diseño y Base de Datos.<br><b>Ramon Salazar:</b> Documentacion y medidador de cliente.<br><b>Ricardo Marin:</b> Documentacion, Analista de UX y UI, Backup de codigo.<br> Desarrollado para la obtencion del titulo de TSU, en la Universidad Politecnica Jose Antonio Anzoategui</div><div class="col s12 l5 center"><img class="responsive-img circle" style="width: 140px; height: auto;" src="../assets/img/imgs/download.jpeg"></div>');
+        $('#Cartelera-contenido').html('<div class="col s12 l7"><b>Ricardo Acero:</b> Desarrollador de codigo, Diseño y Base de Datos.<br> Desarrollado para la obtencion del titulo de TSU, en la Universidad Politecnica Jose Antonio Anzoategui</div><div class="col s12 l5 center"><img class="responsive-img circle" style="width: 140px; height: auto;" src="../assets/img/imgs/download.jpeg"></div>');
 
     });
 </script>
