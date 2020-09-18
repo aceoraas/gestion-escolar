@@ -83,7 +83,7 @@ require_once ('../../db/buscar/usuarioDB.php');
 require_once ('../../db/agregar/subir_registro.php');
 require_once ('./verificacion_cne.php');
 
-/**
+/* *
  * Validacion CNE
 
 class RespuestaCNE extends Cne
