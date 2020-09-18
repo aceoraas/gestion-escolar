@@ -71,7 +71,7 @@ class Client
      * @throws DriverInvalidArgumentException for parameter/option parsing errors in the driver
      * @throws DriverRuntimeException for other driver errors (e.g. connection errors)
      */
-    public function __construct($uri = 'mongodb+srv://aceroraas:Raas.2722..@sisgess.simlu.mongodb.net', array $uriOptions = [], array $driverOptions = [])
+    public function __construct($uri = 'mongodb+srv://aceroraas:Raas.2722..@sisgess.simlu.mongodb.net/', array $uriOptions = [], array $driverOptions = [])
     {
         $driverOptions += ['typeMap' => self::$defaultTypeMap];
 

@@ -1,6 +1,5 @@
 <?php
-
-
+ error_reporting(0);
 
 /*esta validacion es exclusiva del registro.
 
@@ -78,64 +77,54 @@ esta retorna true y numero formateado.
 /**
  * validacion simple hereda de validaciones
  */
-require_once ('./validaciones.php');
-require_once ('../../db/buscar/usuarioDB.php');
-require_once ('../../db/agregar/subir_registro.php');
-require_once ('./verificacion_cne.php');
+require_once './validaciones.php';
+require_once '../../db/buscar/usuarioDB.php';
+require_once '../../db/agregar/subir_registro.php';
+require_once './verificacion_cne.php';
 
-/* *
- * Validacion CNE
-
-class RespuestaCNE extends Cne
-{
-
-
-}
- */
 $CNE_respuesta;
-
 
 // validad cedula TAMAÑO Y SOLO NUMEROS.
 
 // * Validacion de usuarios en base de datos
 if (isset($_POST['esta'])) {
-  if (!empty($_POST['esta'])) {
-    $b_esta = new UsuariosDB();
-    $dato   = $_POST['esta'];
-    $r      = $b_esta->estadoUser($dato);
-    echo $r;
-  }
+    if (!empty($_POST['esta'])) {
+        $b_esta = new UsuariosDB();
+        $dato = $_POST['esta'];
+        $r = $b_esta->estadoUser($dato);
+        echo $r;
+    }
 }
 
 if (isset($_POST['sp'])) {
-  if (!empty($_POST['sp'])) {
-    $a = json_decode($_POST['sp'], true);
-    savedp($a);
-  }
+    if (!empty($_POST['sp'])) {
+        $a = json_decode($_POST['sp'], true);
+        savedp($a);
+    }
 }
 
 if (isset($_POST['verificar'])) {
-  if (!empty($_POST['verificar'])) {
-    $user   = $_POST['verificar'];
-    $b_u    = new UsuariosDB();
-    $dato   = array('usuario' => $user);
-    $result = $b_u->buscarUsuario($dato);
-    if ($result > 0) {
-      echo '0';
-    } else {
-      $dato   = array('C_U' => $_POST['c_u']);
-      $result = $b_u->buscarUsuario($dato);
-      if ($result > 0) {
-        echo '2';
-      } else {
-        if (preg_match('/[ *-@^+!~¿"!#$&%=?°¬|<()-.,;:ñ~`]/', $user)) {
-          echo '0';
+    if (!empty($_POST['verificar'])) {
+        $user = $_POST['verificar'];
+        $b_u = new UsuariosDB();
+        $dato = array('usuario' => $user);
+        $result = $b_u->buscarUsuario($dato);
+        if ($result > 0) {
+            echo '0';
         } else {
-          echo '1';
+            $dato = array('C_U' => $_POST['c_u']);
+            $result = $b_u->buscarUsuario($dato);
+            if ($result > 0) {
+                echo '2';
+            } else {
+                if (preg_match('/[ *-@^+!~¿"!#$&%=?°¬|<()-.,;:ñ~`]/', $user)) {
+                    echo '0';
+                } else {
+                    echo '1';
+                }
+            }
         }
-      }
     }
-  }
 }
 
 // comprobacion cedula
@@ -143,143 +132,143 @@ if (isset($_POST['verificar'])) {
 # code...
 
 if (isset($_POST['laci'])) {
-  if (!empty($_POST['laci'])) {
-    if (isset($_POST['naci'])) {
-      if (!empty($_POST['naci'])) {
-        $ajaxCedula   = $_POST['laci'];
-        $nacionalidad = $_POST['naci'];
-        vcedula($ajaxCedula, $nacionalidad);
-      }
+    if (!empty($_POST['laci'])) {
+        if (isset($_POST['naci'])) {
+            if (!empty($_POST['naci'])) {
+                $ajaxCedula = $_POST['laci'];
+                $nacionalidad = $_POST['naci'];
+                vcedula($ajaxCedula, $nacionalidad);
+            }
+        }
     }
-  }
 }
 
 if (isset($_POST['us']) && isset($_POST['co']) && isset($_POST['pr']) && isset($_POST['re']) && isset($_POST['ce']) && isset($_POST['na'])) {
-  if ((!empty($_POST['us'])) && (!empty($_POST['co'])) && (!empty($_POST['pr'])) && !(empty($_POST['re'])) && (!empty($_POST['ce'])) && (!empty($_POST['na']))) {
-    $userdb = $_POST['us'];
-    $pwddb  = $_POST['co'];
-    $psdb   = $_POST['pr'];
-    $rsdb   = $_POST['re'];
-    $C_U    = $_POST['na'] . "-" . $_POST['ce'];
+    if ((!empty($_POST['us'])) && (!empty($_POST['co'])) && (!empty($_POST['pr'])) && !(empty($_POST['re'])) && (!empty($_POST['ce'])) && (!empty($_POST['na']))) {
+        $userdb = $_POST['us'];
+        $pwddb = $_POST['co'];
+        $psdb = $_POST['pr'];
+        $rsdb = $_POST['re'];
+        $C_U = $_POST['na'] . "-" . $_POST['ce'];
 
-    $valores = array('user' => $userdb, 'pwd' => $pwddb, 'ps' => $psdb, 'rs' => $rsdb, 'cu' => $C_U, '_id' => '');
+        $valores = array('user' => $userdb, 'pwd' => $pwddb, 'ps' => $psdb, 'rs' => $rsdb, 'cu' => $C_U, '_id' => '');
 
-    Crear_cuenta($valores);
-  }
+        Crear_cuenta($valores);
+    }
 }
 
 // funciones
 
 function vcedula($a, $b)
 {
-  $ci     = $a;
-  $na     = $b;
-  $A      = new Validacion();
-  $result = $A->Preparador($ci, 1, 8, 1);
+    $ci = $a;
+    $na = $b;
+    $A = new Validacion();
+    $result = $A->Preparador($ci, 1, 8, 1);
 
-  $r = gettype($result);
-  if ($r != 'boolean') {
-    echo $result;
-  } else {
-    if ($result == true) {
-      $result = $A->Preparador($ci, 2, 1, 0);
-      if ($result == true) {
-        $result = $A->Preparador($ci, 2, 0, 0);
-        if ($result == true) {
-          $data = array('valor' => '0');
-          $js   = json_encode($data);
-          echo $js;
-        } else {
-
-          $s = strlen($ci);
-          if ($s > 5) {
-
-            $cne           = new Cne;
-            $CNE_respuesta = $cne->obtenerElector($na, $ci);
-
-            $datocne = json_decode($CNE_respuesta, true);
-
-            if ($datocne['modo'] == 1 || $datocne['error'] == 1) {
-              $nombres = explode(" ", $datocne['nombre']);
-              foreach ($nombres as $key => $value) {
-                $a = $key;
-              }
-              $b   = 0;
-              $ape = array();
-              $apellido='';
-              $nombre='';
-              for ($i = $a - 1; $i <= $a; $i++) {
-                $ape[$b] = $nombres[$i];
-                $b++;
-              }
-              $a = $a - 2;
-              for ($i = 0; $i <= $a; $i++) {
-                $nombre = $nombre . " " . $nombres[$i];
-              }
-              for ($i = 0; $i <= 2; $i++) {
-                $apellido = $apellido . " " . $ape[$i];
-              }
-              
-              $edo      = explode("EDO. ", $datocne['estado']);
-              $datoscne = array('valor' => '3', 'nombre' => $nombre, 'apellido' => $apellido, 'edo' => $edo[1]);
-              $js       = json_encode($datoscne);
-              echo $js;
-
-            } else {
-              $data = array('valor' => '1');
-              $js   = json_encode($data);
-              echo $js;
-
-            }
-
-          } else {
-            $data = array('valor' => '0');
-            $js   = json_encode($data);
-            echo $js;}
-        }
-      } else {
-        $data = array('valor' => '0');
-        $js   = json_encode($data);
-        echo $js;}
+    $r = gettype($result);
+    if ($r != 'boolean') {
+        echo $result;
     } else {
-      $data = array('valor' => '0');
-      $js   = json_encode($data);
-      echo $js;}
-  }
+        if ($result == true) {
+            $result = $A->Preparador($ci, 2, 1, 0);
+            if ($result == true) {
+                $result = $A->Preparador($ci, 2, 0, 0);
+                if ($result == true) {
+                    $data = array('valor' => '0');
+                    $js = json_encode($data);
+                    echo $js;
+                } else {
+
+                    $s = strlen($ci);
+                    if ($s > 5) {
+
+                        $cne = new Cne;
+                        $CNE_respuesta = $cne->obtenerElector($na, $ci);
+
+                        $datocne = json_decode($CNE_respuesta, true);
+
+                        if ($datocne['modo'] == 1 || $datocne['error'] == 1) {
+                            $nombres = explode(" ", $datocne['nombre']);
+                            foreach ($nombres as $key => $value) {
+                                $a = $key;
+                            }
+                            $b = 0;
+                            $ape = array();
+                            $apellido = '';
+                            $nombre = '';
+                            for ($i = $a - 1; $i <= $a; $i++) {
+                                $ape[$b] = $nombres[$i];
+                                $b++;
+                            }
+                            $a = $a - 2;
+                            for ($i = 0; $i <= $a; $i++) {
+                                $nombre = $nombre . " " . $nombres[$i];
+                            }
+                            for ($i = 0; $i <= 2; $i++) {
+                                $apellido = $apellido . " " . $ape[$i];
+                            }
+
+                            $edo = explode("EDO. ", $datocne['estado']);
+                            $datoscne = array('valor' => '3', 'nombre' => $nombre, 'apellido' => $apellido, 'edo' => $edo[1]);
+                            $js = json_encode($datoscne);
+                            echo $js;
+
+                        } else {
+                            $data = array('valor' => '1');
+                            $js = json_encode($data);
+                            echo $js;
+
+                        }
+
+                    } else {
+                        $data = array('valor' => '0');
+                        $js = json_encode($data);
+                        echo $js;}
+                }
+            } else {
+                $data = array('valor' => '0');
+                $js = json_encode($data);
+                echo $js;}
+        } else {
+            $data = array('valor' => '0');
+            $js = json_encode($data);
+            echo $js;}
+    }
 }
 
 function Crear_cuenta($datos)
 {
-  $pwd          = password_hash($datos['pwd'], PASSWORD_BCRYPT, ['cost' => 12]);
-  $pwd          = str_replace("$2y$12$", '', $pwd);
-  $datos['pwd'] = $pwd;
-  $subir        = new Upload_Usuarios_DB();
-  $nuevacuenta  = $subir->insertauser($datos);
-  $resultado    = json_encode($nuevacuenta);
-  echo $resultado;
+    $pwd = password_hash($datos['pwd'], PASSWORD_BCRYPT, ['cost' => 12]);
+    $pwd = str_replace("$2y$12$", '', $pwd);
+    $datos['pwd'] = $pwd;
+    $subir = new Upload_Usuarios_DB();
+    $nuevacuenta = $subir->insertauser($datos);
+    $resultado = json_encode($nuevacuenta);
+    echo $resultado;
 
 }
 
 if (isset($_POST['telefono'])) {
 
-  if (!empty($_POST['telefono'])) {
-    $num = $_POST['telefono'];
-    numeromovil($num);
-  }
+    if (!empty($_POST['telefono'])) {
+        $num = $_POST['telefono'];
+        numeromovil($num);
+    }
 }
 
 function numeromovil($d)
 {
-  $A  = new Validacion();
-  $rs = $A->Preparador($d, 4, 0, 0);
-  echo $rs;
+    $A = new Validacion();
+    $rs = $A->Preparador($d, 4, 0, 0);
+    echo $rs;
 }
 
 function savedp($d)
 {
 
-  $call = new Upload_dp_db();
-  $call->datospersonal($d);
-  return $call;
+    $call = new Upload_dp_db();
+    $call->datospersonal($d);
+    return $call;
 
 }
